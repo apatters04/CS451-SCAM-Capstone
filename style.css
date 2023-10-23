@@ -1,0 +1,116 @@
+* {
+  font-family: Bahnschrift;  
+
+}
+
+body{
+  background-color: #FFFFFF;
+  color: #b48e04;
+}
+
+h1{
+  color: #ffd30a;
+}
+
+.header {
+  padding: 30px;
+  text-align: center;
+  background: #0072bb;
+  color: #ffd30a;
+  font-size: 30px;
+}
+
+nav {
+  float: left;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0072bb;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #ffd30a;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li a:hover {
+  background-color: #38aef7;
+  
+}
+
+form {
+  border: 10px solid #ffffff;
+}
+
+
+
+/* Full-width inputs */
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+
+
+button {
+  display: block;
+  background-color: #0072bb;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  padding-left: 500px;
+  padding-right: 500px;
+  margin: 48px 0 24px 0;
+}
+
+img.logo {
+  width:50%;
+}
+
+/* Add padding to containers */
+.my-container {
+  padding-left: 500px;
+  padding-right: 500px;
+}
+
+div#appform{
+  float:left;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.container{
+  padding-top: 50px;
+  padding-left: 250px;
+  padding-right: 250px;
+}
