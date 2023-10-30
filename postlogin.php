@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applications</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+	
     <script src="filter.js"></script>
 </head>
 <body>
     <h1>Applications</h1>
-
+	<br>
     <label for="currentLevel">Filter by Level:</label>
     <select id="currentLevel">
         <option value="">All</option>
@@ -49,30 +48,9 @@
         <option value="2028">2028</option>
     </select>
 	
-	
-    <table class="table">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">First Name</th>
-                <th onclick="sortTable(1)">Last Name</th>
-                <th onclick="sortTable(2)">Student ID</th>
-                <th onclick="sortTable(3)">Email</th>
-                <th onclick="sortTable(4)">Phone Number</th>
-                <th onclick="sortTable(5)">Current Level</th>
-                <th onclick="sortTable(6)">Graduating Semester</th>
-                <th onclick="sortTable(7)">Graduating Year</th>
-                <th onclick="sortTable(8)">GPA</th>
-                <th onclick="sortTable(9)">Hours Completed</th>
-                <th onclick="sortTable(10)">Degree</th>
-                <th onclick="sortTable(11)">Major</th>
-                <th onclick="sortTable(12)">Applying Job</th>
-                <th onclick="sortTable(13)">International Student</th>
-                <th onclick="sortTable(14)">GTACert</th>
-                <th onclick="sortTable(15)">Description</th>
-                <th onclick="sortTable(16)">Serve Instructor</th>
-            </tr>
-        </thead>
-        <tbody>
+	<br>
+	<br>
+    
                     <?php
     // Database connection
     $servername = "localhost";
@@ -91,9 +69,9 @@
 
     if ($result->num_rows > 0) {
         // Output table headers
-        echo "<table border='1'>
+        echo "<table class='table table-hover'>
                 <tr>
-                    <th>First Name</th>
+                    <th scope='col'>First Name</th>
                     <th>Last Name</th>
                     <th>Student ID</th>
                     <th>Email</th>
@@ -144,8 +122,9 @@
     // Close the database connection
     $conn->close();
 ?>
-
-        </tbody>
-    </table>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
 </body>
 </html>
