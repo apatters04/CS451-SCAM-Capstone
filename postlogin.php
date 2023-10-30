@@ -51,7 +51,7 @@
 	<br>
 	<br>
     
-                    <?php
+<?php
     // Database connection
     $servername = "localhost";
     $username = "root"; // Change this
