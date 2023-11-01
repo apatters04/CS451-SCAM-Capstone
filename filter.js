@@ -26,3 +26,11 @@ $(document).ready(function() {
     // Event handlers for filter elements
     $("#currentLevel, #major, #graduatingSemester, #graduatingYear").on("change", applyFilters);
 });
+
+function search_Jobs($_POST){
+    $by_type = $_POST['jobType'];
+    $by_code = $_POST['courseCode'];
+    $by_prof = $_POST['courseInstructor'];
+    $by_day = $_POST['courseDay'];
+    $by_time = $_POST['courseTime'];
+}
