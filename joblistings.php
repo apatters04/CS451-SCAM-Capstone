@@ -73,8 +73,6 @@
             }
 
 
-        //push pull test
-
         $conn->close();
         ?>
     </div>
