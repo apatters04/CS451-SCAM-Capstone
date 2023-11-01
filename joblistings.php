@@ -22,9 +22,7 @@
     
     <div class="container">
 
-        <input type="text" id="myInput" onKeyUp="jobFilter()" placeholder="Search">
 
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
         <?php
         $servername = "localhost";
@@ -48,7 +46,7 @@
 
             if ($result->num_rows > 0) {
                 // Output table headers
-                echo "<table class='table table-hover' id='myTable'>
+                echo "<table class='table table-hover'>
                         <tr>
                             <th scope='col'>Job Type</th>
                             <th>Course</th>
