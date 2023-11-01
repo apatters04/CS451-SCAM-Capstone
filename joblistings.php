@@ -46,7 +46,7 @@
 
             if ($result->num_rows > 0) {
                 // Output table headers
-                echo "<table class='table table-hover'>
+                echo "<table class='table table-hover' id='myTable'>
                         <tr>
                             <th scope='col'>Job Type</th>
                             <th>Course</th>
@@ -73,7 +73,7 @@
             }
 
 
-        
+        //push pull test
 
         $conn->close();
         ?>
