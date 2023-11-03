@@ -40,6 +40,8 @@ if ($uploadOk == 0) {
     } else {
         echo "Sorry, there was an error uploading your file. ";
     }
+    
+    $GTACertFilePath = $target_file; // Add this line after the file upload code
 }
 
 if ($_FILES["GTACert"]["error"] != UPLOAD_ERR_OK) {
