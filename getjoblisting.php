@@ -35,26 +35,16 @@ if ($result) {
             </tr>";
 
             while($row = $result->fetch_assoc()) {
-                let courseTime = formatTime($row["courseTime"]);
-                console.log(courseTime);
-            
-                let newRow = "<tr>" +
-                    "<td>" + $row["jobType"] + "</td>" +
-                    "<td>" + $row["courseCode"] + "</td>" +
-                    "<td>" + $row["courseInstructor"] + "</td>" +
-                    "<td>" + $row["courseDays"] + "</td>" +
-                    "<td>" + courseTime + "</td>" +
-                    "</tr>";
-            
-                document.getElementById("jobListings").innerHTML += newRow;
+                $courseTime = $row["courseTime"];
+                $formattedCourseTime = date("h:i A", strtotime($courseTime));
+                echo "<tr>
+                        <td>" . $row["jobType"] . "</td>
+                        <td>" . $row["courseCode"] . "</td>
+                        <td>" . $row["courseInstructor"] . "</td>
+                        <td>" . $row["courseDays"] . "</td>
+                        <td>" . $formattedCourseTime . "</td>
+                    </tr>";
             }
-            
-            function formatTime(time) {
-                let date = new Date("2023-01-01 " + time);
-                let options = { hour: 'numeric', minute: 'numeric', hour12: true };
-                return new Intl.DateTimeFormat('en-US', options).format(date);
-            }
-  
 
     echo "</table>";
 } else {
