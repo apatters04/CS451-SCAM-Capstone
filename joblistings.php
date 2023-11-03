@@ -25,54 +25,57 @@
         
         
 
-        <?php
+    <?php
+        $servername = "localhost";
+        $username = "root"; // Change this
+        $password = ""; // Change this
+        $dbname = "cs451r";
 
-            if(isset($_POST['search']))
-            {
-                $valueToSearch = $_POST['valueToSearch'];
-                // search in all table columns
-                // using concat mysql function
-                $query = "SELECT * FROM `activejobs` WHERE CONCAT(`jobType`, `courseCode`, `courseInstructor`, `courseDay`, `courseTime`) LIKE '%".$valueToSearch."%'";
-                $search_result = filterTable($query);
-                
-            }
-            else {
-                $query = "SELECT * FROM activejobs";
-                $search_result = filterTable($query);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
 
-        function filterTable($query)
-            {
-                $connect = mysqli_connect("localhost", "root", "", "cs451r");
-                $filter_Result = mysqli_query($connect, $query);
-                return $filter_Result;
+
+            $sql = "SELECT * FROM activejobs"; //connecting to active jobs table?
+            $result = $conn->query($sql);
+
+
+
+            if ($result->num_rows > 0) {
+                // Output table headers
+                echo "<table class='table table-hover' id='myTable'>
+                        <tr>
+                            <th scope='col'>Job Type</th>
+                            <th>Course</th>
+                            <th>Instructor</th>
+                            <th>Day</th>
+                            <th>Time</th>
+                        </tr>";
+
+                // Output data from rows
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row["jobType"]. "</td>
+                            <td>" . $row["courseCode"]. "</td>
+                            <td>" . $row["courseInstructor"]. "</td>
+                            <td>" . $row["courseDays"]. "</td>
+                            <td>" . $row["courseTime"]. "</td>
+                        </tr>";
+                }
+
+                // Close the table
+                echo "</table>";
+            } else {
+                echo "0 results";
             }
 
+
+        $conn->close();
         ?>
-
-        <form action="joblistings.php" method="post">
-        <input type="text" name="valueToSearch" placeholder="Value To Search"><br><br>
-        <input type="submit" name="search" value="Filter">
-
-        <table>
-            <tr>
-                <th>Job Type</th>
-                <th>Course</th>
-                <th>Professor</th>
-                <th>Days</th>
-                <th>Time</th>
-            </tr>
-                <?php while($row = mysqli_fetch_array($query)):?>
-                <tr>
-                    <td><?php echo $row['jobType'];?></td>
-                    <td><?php echo $row['courseCode'];?></td>
-                    <td><?php echo $row['courseInstructor'];?></td>
-                    <td><?php echo $row['courseDay'];?></td>
-                    <td><?php echo $row['courseTime'];?></td>
-                </tr>
-                <?php endwhile;?>
-            </table>
-        </form>
         
     </div>
 
