@@ -5,11 +5,26 @@
 
 body{
   background-color: #FFFFFF;
-  color: #b48e04;
+  color: #344e94;
+}
+
+p{
+  text-align: center;
 }
 
 h1{
+  text-align: center;
   color: #ffd30a;
+}
+
+h1#blue{
+  text-align: center;
+  color: #0072bb;
+}
+
+h2#urgent{
+  text-align: center;
+  color: red;
 }
 
 .header {
