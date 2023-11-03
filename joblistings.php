@@ -6,7 +6,6 @@
     <title>Applications</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="filter.js"></script>
 </head>
 <body>
     <div class="header">        
@@ -23,12 +22,28 @@
     <div class="container">
 
         
-        
+    <form>
+        <select name="job" id="levelSelect">
+            <option value="">Select a level:</option>
+            <option value="BS">BS</option>
+            <option value="MS">MS</option>
+            <option value="PhD">PhD</option>
+        </select>
+        <select name="degree" id="degreeSelect">
+            <option value="">Select a major:</option>
+            <option value="CS">CS</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="BSCS">BSCS</option>
+        </select>
+    </form>  
+    <br>
+    <div id="txtHint">Available job info will be listed here...</div>
 
     <?php
         $servername = "localhost";
-        $username = "root"; // Change this
-        $password = ""; // Change this
+        $username = "root"; 
+        $password = ""; 
         $dbname = "cs451r";
 
         // Create connection
