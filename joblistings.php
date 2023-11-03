@@ -6,9 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+
+<div class="header">        
+        <h1>CSEE GTA Application</h1>
+        <ul>
+            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="joblistings.php">Job Availability</a></li>
+            <li><a href="application.html">Application</a></li>
+            <li><a href="Login.html">Admin Login</a></li>
+        </ul>
+    </div>
     <div class="container">
         <form>
             <label for="jobType">Job Type:</label>
