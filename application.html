@@ -22,7 +22,6 @@ body {
 #regForm {
   background-color: #ffffff;
   margin: 100px auto;
-  font-family: Raleway;
   padding: 40px;
   width: 70%;
   min-width: 300px;
@@ -32,13 +31,6 @@ h1 {
   text-align: center;  
 }
 
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
 
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
@@ -51,7 +43,7 @@ input.invalid {
 }
 
 button {
-  background-color: #04AA6D;
+  background-color: #0072bb;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -104,11 +96,9 @@ button:hover {
     </div>
 
     <form id="regForm" action="submit.php" method="post" enctype="multipart/form-data">
-
-        <h1>CSEE GTA Application</h1>
-
         <!-- One "tab" for each step in the form: -->
-        <div class="tab">Personal Information:
+        <div class="tab">
+            <h1 id="blue">Personal Information</h1>
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" placeholder="First" required>
 
@@ -122,7 +112,8 @@ button:hover {
             <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="(XXX) XXX-XXXX" required>
         </div>
 
-        <div class="tab">Academic Information:
+        <div class="tab">
+            <h1 id="blue">Academic Information</h1>
             <label for="studentID">Student ID:</label>
             <input type="number" id="studentID" name="studentID" placeholder="ID #" required>
 
@@ -162,14 +153,15 @@ button:hover {
                 <option value="ECE">ECE</option>
                 <option value="EE">EE</option>
             </select>
-
+            
+            <br>
             <label for="degree">Degree info:</label>
-            <select id="degree" name="degree">
             <input type="text" id="degree" name="degree" placeholder="(Did you minor in anything?)">
             </select>
         </div>
 
-        <div class="tab">Application Details:
+        <div class="tab">           
+            <h1 id="blue">Application Details</h1>
             <label for="applyingJob">Applying For: </label>
             <select id="applyingJob" name="applyingJob">
                 <option value="Grader">Grader</option>
@@ -189,7 +181,7 @@ button:hover {
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" cols="50"></textarea>
 
-            <label for="serveInstructor">Courses you could serve as lab instructor or grade for (ex. CS 201L/CS 5525/ECE 216, etc.):</label>
+            <label for="serveInstructor">Courses you could serve as lab instructor or gradre for (ex. CS 201L/ CS 5525/ ECE 216):</label>
             <input type="text" id="serveInstructor" name="serveInstructor" required>
         </div>
 
