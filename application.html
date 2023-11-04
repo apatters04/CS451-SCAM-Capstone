@@ -162,27 +162,52 @@ button:hover {
 
         <div class="tab">           
             <h1 id="blue">Application Details</h1>
-            <label for="applyingJob">Applying For: </label>
-            <select id="applyingJob" name="applyingJob">
-                <option value="Grader">Grader</option>
-                <option value="Lab Instructor">Lab Instructor</option>
-                <option value="Both">Both</option>
-            </select>
-
-            <label for="internationalStudentsCheckbox"> International Student?
-                <input type="checkbox" id="internationalStudentsCheckbox" name="internationalStudentsCheckbox">
-            </label>
-
-            <div class="GTACert">
-                <label for="GTACert">GTA Certificate:</label>
-                <input type="file" id="GTACert" name="GTACert">
+            <br>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="applyingJob">Applying For: </label>
+                        </div>
+                        
+                        <div class="col-sm">
+                            <select id="applyingJob" name="applyingJob">
+                                <option value="Grader">Grader</option>
+                                <option value="Lab Instructor">Lab Instructor</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p style="float: left; font-size: 12px; color:#2e89c2">*To apply for Lab instructor positions you must be GTA Certified</p>
+                </div>
+            
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="internationalStudentsCheckbox"> International Student? </label>
+                        </div>
+                        
+                        <div class="col-sm" style="float:left">
+                            <input type="checkbox" id="internationalStudentsCheckbox" name="internationalStudentsCheckbox" onclick="showhideGTA(this)">
+                            </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm">
+                    <div id="GTAUpload">
+                        <label for="GTACert">Upload GTA Certification (if applicable):</label>
+                        <input type="file" id="GTACert" name="GTACert">
+                    </div>
+                </div>
             </div>
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" cols="50"></textarea>
-
+            <!--<label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea>-->
+            <br>
+            <br>
             <label for="serveInstructor">Courses you could serve as lab instructor or gradre for (ex. CS 201L/ CS 5525/ ECE 216):</label>
-            <input type="text" id="serveInstructor" name="serveInstructor" required>
+            <input type="text" id="serveInstructor" name="serveInstructor"  rows="4" cols="50" required>
+            
         </div>
 
         <div style="overflow:auto;">
