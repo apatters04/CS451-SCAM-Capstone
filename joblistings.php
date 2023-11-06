@@ -47,7 +47,7 @@
             </select>
         </form>
         <br>
-        <div id="jobListings">Job listings will be listed here...</div>
+        <div id="jobListings" style="max-height: 300px; overflow: auto;">Job listings will be listed here...</div>
     </div>
 
     <script>
