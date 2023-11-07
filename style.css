@@ -82,8 +82,6 @@ input {
 }
 
 
-
-
 button {
   display: block;
   background-color: #0072bb;
@@ -93,7 +91,9 @@ button {
   border: none;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 5px;
 }
+
 
 button:hover {
   opacity: 0.8;
@@ -114,7 +114,6 @@ img.logo {
 
 /* Add padding to containers */
 .my-container {
-  text-align: center;
   padding-left: 500px;
   padding-right: 500px;
 }
