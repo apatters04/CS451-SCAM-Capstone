@@ -20,7 +20,6 @@
         </ul>
     </div>
     <br>
-    <br>
     <?php
 
     // Database connection details
@@ -132,16 +131,15 @@
 
     ?>
     <br>
-    <br>
     <div class="row" >
-        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
+        <div class="col-sm" style="display:flex; justify-content: center; align-items: left;">
             <a href="application.html"><button class="homebutton">Apply Now!</button></a>        
         </div>
-        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
+        <div class="col-sm" style="display:flex; justify-content: left; align-items: left;">
                 <a href="joblistings.php"><button class="homebutton">Available Jobs</button></a>  
          </div>
 
-        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
+        <div class="col-sm" style="display:flex; justify-content: left; align-items: left;">
             <a href="Login.html"><button class="homebutton">Admin Login</button></a>  
         </div>          
                    
