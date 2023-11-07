@@ -20,34 +20,56 @@
             <li><a href="Login.html">Admin Login</a></li>
         </ul>
     </div>
-    <div class="container">
+    <div class="my-container">
+        <br>
+        <br>
+        <h1 id="blue"><u>Available Positions</u></h1>
+        <p>All</p>
+        <br>
         <form>
-            <label for="jobType">Job Type:</label>
-            <select name="jobType" id="jobType">
-                <option value="">Both</option>
-                <option value="Grader">Grader</option>
-                <option value="Lab Instructor">Lab Instructor</option>
-            </select>
-            <label for="courseCode">Department:</label>
-            <select name="courseCode" id="courseCode">
-                <option value="">All</option>
-                <option value="CS">CS</option>
-                <option value="IT">IT</option>
-                <option value="ECE">ECE</option>
-                <option value="BSCS">BSCS</option>
-            </select>
-            <label for="day">Day:</label>
-            <select name="day" id="day">
-                <option value="">All</option>
-                <option value="M">Monday</option>
-                <option value="T">Tuesday</option>
-                <option value="W">Wednesday</option>
-                <option value="Th">Thursday</option>
-                <option value="F">Friday</option>
-            </select>
+            <div class="row">
+                <div class="col-4" style="float:left;">
+                    <label>Filter By:</label>
+                </div>
+                
+                <div class="col" style="float:right;">
+                
+                    <div class="row">
+                        <div class="col" style="float:right;">
+                            <label for="jobType">Job: Type</label>
+                            <select name="jobType" id="jobType">
+                                <option value="">Both</option>
+                                <option value="Grader">Grader</option>
+                                <option value="Lab Instructor">Lab Instructor</option>
+                            </select>
+                        </div>
+                        <div class="col" style="float:right;">
+                            <label for="courseCode">Department:</label>
+                            <select name="courseCode" id="courseCode">
+                                <option value="">All</option>
+                                <option value="CS">CS</option>
+                                <option value="IT">IT</option>
+                                <option value="ECE">ECE</option>
+                                <option value="BSCS">BSCS</option>
+                            </select>
+                        </div>    
+                        <div class="col" style="float:right;">
+                            <label for="day">Day:</label>
+                            <select name="day" id="day">
+                                <option value="">All</option>
+                                <option value="M">Monday</option>
+                                <option value="T">Tuesday</option>
+                                <option value="W">Wednesday</option>
+                                <option value="Th">Thursday</option>
+                                <option value="F">Friday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
         <br>
-        <div id="jobListings" style="max-height: 300px; overflow: auto;">Job listings will be listed here...</div>
+        <div id="jobListings" style="max-height: 500px; overflow: auto;">Job listings will be listed here...</div>
     </div>
 
     <script>
