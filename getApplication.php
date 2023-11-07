@@ -1,17 +1,17 @@
 <?php
 $mysqli = new mysqli("localhost", "root", "", "cs451r");
 if($mysqli->connect_error) {
-  exit('Could not connect');
+    exit('Could not connect');
 }
-#git test 
+
 $level = isset($_GET['level']) ? $_GET['level'] : "";
 $major = isset($_GET['major']) ? $_GET['major'] : "";
 
 $sql = "SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
- graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume  FROM application WHERE 1 ";
+    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume  FROM application WHERE 1 ";
 
 if (!empty($level) && !empty($major)) {
-        $sql .= "AND currentLevel = ? AND degree = ?";
+    $sql .= "AND currentLevel = ? AND degree = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("ss", $level, $major);
 } elseif (!empty($level)) {
@@ -32,6 +32,7 @@ if ($stmt) {
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume);
 
     echo "<table class='table table-hover'>";
+    echo "<thead>";
     echo "<tr>";
     echo "<th>First Name</th>";
     echo "<th>Last Name</th>";
@@ -51,6 +52,8 @@ if ($stmt) {
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
     echo "</tr>";
+    echo "</thead>";
+    echo "<tbody>";
 
     while ($stmt->fetch()) {
         echo "<tr>";
@@ -82,6 +85,7 @@ if ($stmt) {
         echo "</tr>";
     }
 
+    echo "</tbody>";
     echo "</table>";
 
     $stmt->close();
