@@ -11,8 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-rI+9KnFlrW97RCNfOWAW+K0t5uvCY2z2mXm9CrquO67Fbmu1JwPbE6P3JskOozA3" crossorigin="anonymous"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+       document.addEventListener("DOMContentLoaded", function() {
             const table = document.querySelector("table");
+
+            const sortDirection = {}; // Keep track of the sorting direction for each column
 
             function sortTable(column) {
                 const rows = Array.from(table.querySelectorAll("tbody tr"));
@@ -23,6 +25,13 @@
 
                     return isNaN(aVal) ? aVal.localeCompare(bVal) : aVal - bVal;
                 });
+
+                if (sortDirection[column] === 'desc') {
+                    rows.reverse(); // Reverse the order for descending sort
+                    sortDirection[column] = 'asc'; // Update sort direction
+                } else {
+                    sortDirection[column] = 'desc'; // Update sort direction
+                }
 
                 rows.forEach(row => table.querySelector("tbody").appendChild(row));
             }
