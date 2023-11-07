@@ -59,6 +59,7 @@
             if ($_FILES[$fileInputName]["size"] > 500000) {
                 echo "Sorry, your file is too large. ";
                 $uploadOk = 0;
+                echo "<br>";
             }
 
             // Check if $uploadOk is set to 0 by an error
@@ -68,10 +69,14 @@
                 if (move_uploaded_file($_FILES[$fileInputName]["tmp_name"], $target_file)) {
                     echo "The file " . htmlspecialchars(basename($_FILES[$fileInputName]["name"])) . " has been uploaded. ";
                     return $target_file; // Return the file path
+                    echo "<br>";
                 } else {
                     echo "Sorry, there was an error uploading your file. ";
+                    echo "<br>";
                 }
+                
             }
+            echo "<br>";
 
         }
 
@@ -112,15 +117,36 @@
         VALUES ('$firstName', '$lastName', '$studentID', '$email', '$phoneNumber', '$currentLevel', '$graduatingSemester', '$graduatingYear', '$GPA', '$hoursCompleted', '$degree', '$major', '$applyingJob', '$internationalStudentsCheckbox', '$serveInstructor', '$GTACertFilePath', '$resumeFilePath')";
 
         if ($conn->query($sql) === true) {
+            echo "<br>";
             echo "Application submitted successfully!";
+            echo "<br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
 
+
     // Close database connection
     $conn->close();
 
     ?>
+
+    <div style="display:flex; justify-content: center; align-items: center;">
+            <a href="application.html"><button class="homebutton">Apply Now!</button></a>        
+        </div>
+
+        <div class="row" >
+            <div class="col-6" style="display:flex; justify-content: right; align-items: center;">
+                <a href="joblistings.php"><button class="homebutton">Available Jobs</button></a>  
+            </div>
+
+            <div class="col-6" style="display:flex; justify-content: left; align-items: center;">
+                <a href="Login.html"><button class="homebutton">Admin Login</button></a>  
+            </div>          
+                   
+             
+        </div>
+    </div>
+</html>
 
    
