@@ -19,7 +19,8 @@
             <li><a href="Login.html">Admin Login</a></li>
         </ul>
     </div>
-
+    <br>
+    <br>
     <?php
 
     // Database connection details
@@ -130,19 +131,19 @@
     $conn->close();
 
     ?>
-
-    <div style="display:flex; justify-content: center; align-items: center;">
+    <br>
+    <br>
+    <div class="row" >
+        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
             <a href="application.html"><button class="homebutton">Apply Now!</button></a>        
         </div>
-
-        <div class="row" >
-            <div class="col-6" style="display:flex; justify-content: right; align-items: center;">
+        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
                 <a href="joblistings.php"><button class="homebutton">Available Jobs</button></a>  
-            </div>
+         </div>
 
-            <div class="col-6" style="display:flex; justify-content: left; align-items: center;">
-                <a href="Login.html"><button class="homebutton">Admin Login</button></a>  
-            </div>          
+        <div class="col-2" style="display:flex; justify-content: center; align-items: left;">
+            <a href="Login.html"><button class="homebutton">Admin Login</button></a>  
+        </div>          
                    
              
         </div>
