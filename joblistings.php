@@ -39,7 +39,7 @@
                 
                     <div class="row">
                         <div class="col" style="float:right;">
-                            <label for="jobType">Job: Type</label>
+                            <label for="jobType">Job:</label>
                             <select name="jobType" id="jobType">
                                 <option value="">Both</option>
                                 <option value="Grader">Grader</option>
