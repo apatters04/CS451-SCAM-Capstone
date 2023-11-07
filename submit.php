@@ -69,6 +69,48 @@
             echo "File upload failed with error code: " . $_FILES["GTACert"]["error"];
         }
 
+        #Below is resume code
+
+        $target_dir = "resume/";
+        $target_file = $target_dir . basename($_FILES["resume"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        $counter = 1;
+
+        while (file_exists($target_file)) {
+            $filename = pathinfo($_FILES["resume"]["name"], PATHINFO_FILENAME);
+            $extension = pathinfo($_FILES["resume"]["name"], PATHINFO_EXTENSION);
+
+            $target_file = $target_dir . $filename . ' (' . $counter . ').' . $extension;
+
+            $counter++;
+        }
+
+        if ($_FILES["resume"]["size"] > 500000) {
+            echo "Sorry, your file is too large. ";
+            $uploadOk = 0;
+        }
+
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded. ";
+        } else {
+            if (move_uploaded_file($_FILES["resume"]["tmp_name"], $target_file)) {
+                echo "The file " . htmlspecialchars(basename($_FILES["resume"]["name"])) . " has been uploaded. ";
+                $resumeFilePath = $target_file;
+            } else {
+                echo "Sorry, there was an error uploading your file. ";
+            }
+            
+            $resumeFilePath = $target_file;
+        }
+
+        if ($_FILES["resume"]["error"] != UPLOAD_ERR_OK) {
+            echo "File upload failed with error code: " . $_FILES["resume"]["error"];
+        }
+
+        #resume code done
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $firstName = $_POST['firstName'];
             $lastName = $_POST['lastName'];
