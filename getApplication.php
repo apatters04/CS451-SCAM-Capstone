@@ -8,7 +8,7 @@ $level = isset($_GET['level']) ? $_GET['level'] : "";
 $major = isset($_GET['major']) ? $_GET['major'] : "";
 
 $sql = "SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
-    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume  FROM application WHERE 1 ";
+    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume, timestamp  FROM application WHERE 1 ";
 
 if (!empty($level) && !empty($major)) {
     $sql .= "AND currentLevel = ? AND degree = ?";
@@ -29,7 +29,7 @@ if (!empty($level) && !empty($major)) {
 if ($stmt) {
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume);
+    $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp);
 
     echo "<table class='table table-hover'>";
     echo "<thead>";
@@ -51,6 +51,7 @@ if ($stmt) {
     echo "<th>Description</th>";
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
+    echo "<th>Timestamp</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -82,6 +83,7 @@ if ($stmt) {
         } else {
             echo "<td></td>";
         }
+        echo "<td>" . $timestamp . "</td>";
         echo "</tr>";
     }
 
