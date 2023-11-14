@@ -13,8 +13,8 @@
         <ul>
             <li><a href="Homepage.html">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
-            <li><a href="application.html">Application</a></li>
-            <li><a href="Login.html">Login</a></li>
+            <li><a href="application.php">Application</a></li>
+            <li><a href="Login.php">Login</a></li>
         </ul>
     </div>
     

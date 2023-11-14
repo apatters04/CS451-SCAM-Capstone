@@ -1,54 +1,53 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = ""; 
-$dbname = "CS451R";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="header">        
+        <h1>CSEE GTA Application</h1>
+        <ul>
+            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="joblistings.php">Job Availability</a></li>
+            <li><a href="application.php">Application</a></li>
+            <li><a href="Login.php">Login</a></li>
+        </ul>
+    </div>
     
-    
+    <form action="login.php" method="post">
+        <div>
+            <div class="imgcontainer">
+                <img src="UMKC_logo.png" alt="Logo" class="logo">
+            </div>
+            
+            <?php
+            // Display the message if it exists
+            if (isset($_GET['message'])) {
+                echo '<p style="color: red;">' . htmlspecialchars($_GET['message']) . '</p>';
+            }
+            ?>
 
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM login WHERE username=? AND password=?");
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    $stmtType = $conn->prepare("SELECT type FROM login WHERE username = ?");
-    $stmtType->bind_param("s", $username);
-    $stmtType->execute();
-    $resultType = $stmtType->get_result();
+            <div class="my-container">
+                <br>
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+            
+                <button type="submit" style="display: inline-block;">Login</button>
+                <button type="submit" style="display: inline-block; float: right;">Create Account</button>
+            </div>
 
-
-
-    if ($result->num_rows > 0) {
-        $row = $resultType->fetch_assoc();
-        $type = $row['type'];
-        if($type == 'admin')
-        {
-        header("Location: postlogin.php");
-        }
-        elseif ($type == 'student')
-        { header("Location: studentpostlogin.php?username=$username");
-        } 
-        exit();
-    } else {
-        echo "Invalid username or password.";
-    }
-
-    $stmt->close();
-}
-
-$conn->close();
-?>
+        </div>
+        
+    </form>
+</body>
+</html>

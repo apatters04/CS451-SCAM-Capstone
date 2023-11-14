@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Check if the user is not logged in
+if (!isset($_SESSION['idNo'])) {
+    $message = "You need to be logged in to access this page. Please log in below.";
+    header("Location: Login.php?message=" . urlencode($message)); 
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,11 +101,13 @@ button:hover {
         <ul>
             <li><a href="Homepage.html">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
-            <li><a href="application.html">Application</a></li>
-            <li><a href="Login.html">Login</a></li>
+            <li><a href="application.php">Application</a></li>
+            <li><a href="Login.php">Login</a></li>
         </ul>
     </div>
 
+
+    
     <form id="regForm" action="submit.php" method="post" enctype="multipart/form-data">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
