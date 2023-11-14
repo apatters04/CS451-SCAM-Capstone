@@ -17,24 +17,28 @@
             <li><a href="Login.php">Login</a></li>
         </ul>
     </div>
+<form action="createAccount.php" method="post">
+    <div class="my-container">
+        <br>
+        <label for="firstName"><b>First Name</b></label>
+        <input type="text" placeholder="Enter first name" name="firstName" required>
+        <br>
+        <label for="lastName"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter last name" name="lastName" required>
+        <br>
+        <label for="studentID"><b>Student ID</b></label>
+        <input type="number" placeholder="Enter student ID" name="studentID" required>
+        <br>
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <br>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
     
+        <button type="submit" style="display: inline-block;">Create Account</button>
+    </div>
+</form>
 
-
-
-
-    <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = ""; 
-    $dbname = "CS451R";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    ?>
 
 
 </body>

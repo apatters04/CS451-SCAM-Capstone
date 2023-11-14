@@ -20,7 +20,7 @@
         </ul>
     </div>
     
-    <form action="login.php" method="post">
+    <form action="loginscript.php" method="post">
         <div>
             <div class="imgcontainer">
                 <img src="UMKC_logo.png" alt="Logo" class="logo">
@@ -37,13 +37,13 @@
             <div class="my-container">
                 <br>
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+                <input type="text" placeholder="Enter Username" name="username">
                 <br>
                 <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <input type="password" placeholder="Enter Password" name="password">
             
                 <button type="submit" style="display: inline-block;">Login</button>
-                <button type="submit" style="display: inline-block; float: right;">Create Account</button>
+                <button type="submit" formaction="createAccount.html" style="display: inline-block; float: right;">Create Account</button>
             </div>
 
         </div>
