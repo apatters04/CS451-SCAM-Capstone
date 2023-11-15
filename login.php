@@ -30,7 +30,7 @@ session_start();
             </div>
             
             <?php
-            session_start();
+            
             // Display the message if it exists
             if (isset($_GET['message'])) {
                 echo '<p style="color: red;">' . htmlspecialchars($_GET['message']) . '</p>';

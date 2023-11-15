@@ -43,27 +43,82 @@ if (!isset($_SESSION['idNo'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $idNo = $_SESSION['idNo'];
+$sqlUserInfo = "SELECT firstname, lastname, studentID FROM login WHERE idNo = $idNo";
+    $resultUserInfo = $conn->query($sqlUserInfo);
+
+if ($resultUserInfo->num_rows > 0) {
+    $row = $resultUserInfo->fetch_assoc();
+
+    // Store user information in sessions
+    $_SESSION['firstname'] = $row['firstname'];
+    $_SESSION['lastname'] = $row['lastname'];
+    $_SESSION['studentID'] = $row['studentID'];
+}
+
     $studentID = $_SESSION['studentID'];
 
-    $sql = "SELECT * FROM application WHERE studentID IN (SELECT studentID FROM login WHERE studentID = $studentID)";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        echo "<h2>Your Applications:</h2>";
+    $result = $conn->prepare("SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
+    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, description, serveInstructor, timestamp, status FROM application WHERE studentID IN (SELECT studentID FROM login WHERE studentID LIKE $studentID)");
+   
+    if ($result) {
+        $result->execute();
+        $result->store_result();
+        $result->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $desc, $serv, $timestamp, $status);
+    
         echo "<table class='table table-hover'>";
-        echo "<thead><tr><th>Application ID</th><th>Other Info</th></tr></thead>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>First Name</th>";
+        echo "<th>Last Name</th>";
+        echo "<th>Student ID</th>";
+        echo "<th>Email</th>";
+        echo "<th>Phone Number</th>";
+        echo "<th>Current Level</th>";
+        echo "<th>GPA</th>";
+        echo "<th>Degree</th>";
+        echo "<th>Graduating Semester</th>";
+        echo "<th>Graduating Year</th>";
+        echo "<th>Hours Completed</th>";
+        echo "<th>Applying Job</th>";
+        echo "<th>International Students Checkbox</th>";
+        echo "<th>Description</th>";
+        echo "<th>Serve Instructor</th>";
+        echo "<th>Timestamp</th>";
+        echo "<th>Status</th>";
+        echo "</tr>";
+        echo "</thead>";
         echo "<tbody>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr><td>{$row['applicationID']}</td><td>{$row['otherInfo']}</td></tr>";
+    
+        while ($result->fetch()) {
+            echo "<tr>";
+            echo "<td>" . $fname . "</td>";
+            echo "<td>" . $lname . "</td>";
+            echo "<td>" . $sid . "</td>";
+            echo "<td>" . $email . "</td>";
+            echo "<td>" . $phoneNumber . "</td>";
+            echo "<td>" . $currentlevel . "</td>";
+            echo "<td>" . $gpa . "</td>";
+            echo "<td>" . $degree . "</td>";
+            echo "<td>" . $gsem . "</td>";
+            echo "<td>" . $gyear . "</td>";
+            echo "<td>" . $hcomplete . "</td>";
+            echo "<td>" . $applyjob . "</td>";
+            echo "<td>" . $istu . "</td>";
+            echo "<td>" . $desc . "</td>";
+            echo "<td>" . $serv . "</td>";
+            echo "<td>" . $timestamp . "</td>";
+            echo "<td>" . $status . "</td>";
+            echo "</tr>";
         }
+    
         echo "</tbody>";
         echo "</table>";
-    } 
-    else {
-        echo "<p>No applications found for your student ID.</p>";
+    
+        $result->close();
+    } else {
+        echo "Error in query execution: " . $mysqli->error;
     }
-    $conn->close();
-
     ?>
 </body>
 </html>

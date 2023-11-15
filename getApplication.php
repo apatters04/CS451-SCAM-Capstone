@@ -2,15 +2,17 @@
 session_start();
 
 $mysqli = new mysqli("localhost", "root", "", "cs451r");
-if($mysqli->connect_error) {
+if ($mysqli->connect_error) {
     exit('Could not connect');
 }
 
 $level = isset($_GET['level']) ? $_GET['level'] : "";
 $major = isset($_GET['major']) ? $_GET['major'] : "";
 
+$statusOptions = array("Submitted", "Reviewing", "Rejected", "Interviewing");
+
 $sql = "SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
-    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume, timestamp  FROM application WHERE 1 ";
+    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume, timestamp, status FROM application WHERE 1 ";
 
 if (!empty($level) && !empty($major)) {
     $sql .= "AND currentLevel = ? AND degree = ?";
@@ -31,7 +33,9 @@ if (!empty($level) && !empty($major)) {
 if ($stmt) {
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp);
+    $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp, $status);
+
+    echo "<form method='post' action='update_status.php'>";
 
     echo "<table class='table table-hover'>";
     echo "<thead>";
@@ -54,6 +58,7 @@ if ($stmt) {
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
     echo "<th>Timestamp</th>";
+    echo "<th>Status</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -73,24 +78,36 @@ if ($stmt) {
         echo "<td>" . $hcomplete . "</td>";
         echo "<td>" . $applyjob . "</td>";
         echo "<td>" . $istu . "</td>";
+        echo "<td>";
         if ($gtacert != "" && $gtacert != "null") {
-            echo "<td><a href='$gtacert' target='_blank'>View GTACert</a></td>";
-        } else {
-            echo "<td></td>";
+            echo "<a href='$gtacert' target='_blank'>View GTACert</a>";
         }
+        echo "</td>";
         echo "<td>" . $desc . "</td>";
         echo "<td>" . $serv . "</td>";
+        echo "<td>";
         if ($resume != "" && $resume != "null") {
-            echo "<td><a href='$resume' target='_blank'>View Resume</a></td>";
-        } else {
-            echo "<td></td>";
+            echo "<a href='$resume' target='_blank'>View Resume</a>";
         }
+        echo "</td>";
         echo "<td>" . $timestamp . "</td>";
+        echo "<td>";
+        echo "<select name='status[]'>";
+        foreach ($statusOptions as $option) {
+            $selected = ($option == $status) ? "selected" : "";
+            echo "<option value='$option' $selected>$option</option>";
+        }
+        echo "</select>";
+        echo "</td>";
+        echo "<td><input type='hidden' name='studentID[]' value='$sid'></td>";
         echo "</tr>";
     }
 
     echo "</tbody>";
     echo "</table>";
+
+    echo "<input type='submit' value='Update Status'>";
+    echo "</form>";
 
     $stmt->close();
 } else {
