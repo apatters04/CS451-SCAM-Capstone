@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,37 +17,40 @@
     <div class="header">        
         <h1>CSEE GTA Application</h1>
         <ul>
-            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
             <li><a href="Login.php">Login</a></li>
         </ul>
     </div>
     
-    <form action="loginscript.php" method="post">
         <div>
             <div class="imgcontainer">
                 <img src="UMKC_logo.png" alt="Logo" class="logo">
             </div>
             
             <?php
+            session_start();
             // Display the message if it exists
             if (isset($_GET['message'])) {
                 echo '<p style="color: red;">' . htmlspecialchars($_GET['message']) . '</p>';
             }
+            echo $_SESSION['idNo'];
             ?>
 
 
             <div class="my-container">
                 <br>
+                <form action="loginscript.php" method="post">
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username">
+                <input type="text" placeholder="Enter Username" name="username" require>
                 <br>
                 <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password">
-            
+                <input type="password" placeholder="Enter Password" name="password" require>
+                
                 <button type="submit" style="display: inline-block;">Login</button>
-                <button type="submit" formaction="createAccount.html" style="display: inline-block; float: right;">Create Account</button>
+                <a href="createAccount.html" style="display: inline-block; float: right;">Create Account</a>
+                </form>
             </div>
 
         </div>

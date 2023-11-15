@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Check if the user is not logged in
+if (!isset($_SESSION['idNo'])) {
+    $message = $_SESSION['idNo'] . "You need to be logged in to access this page. Please log in below.";
+    header("Location: Login.php?message=" . urlencode($message)); 
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +22,7 @@
     <div class="header">        
         <h1>Student's Applications Page</h1>
         <ul>
-            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
             <li><a href="Login.php">Login</a></li>
@@ -19,11 +30,8 @@
     </div>
     
 
-
-
-
     <?php
-    session_start();
+
     $servername = "localhost";
     $username = "root";
     $password = ""; 
@@ -35,8 +43,27 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $studentID = $_SESSION['studentID'];
+
+    $sql = "SELECT * FROM application WHERE studentID IN (SELECT studentID FROM login WHERE studentID = $studentID)";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<h2>Your Applications:</h2>";
+        echo "<table class='table table-hover'>";
+        echo "<thead><tr><th>Application ID</th><th>Other Info</th></tr></thead>";
+        echo "<tbody>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>{$row['applicationID']}</td><td>{$row['otherInfo']}</td></tr>";
+        }
+        echo "</tbody>";
+        echo "</table>";
+    } 
+    else {
+        echo "<p>No applications found for your student ID.</p>";
+    }
+    $conn->close();
+
     ?>
-
-
 </body>
 </html>

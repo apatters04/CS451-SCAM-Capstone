@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mysqli = new mysqli("localhost", "root", "", "cs451r");
 if($mysqli->connect_error) {
     exit('Could not connect');

@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -24,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssiss", $firstName, $lastName, $studentID, $username, $password);
 
     if ($stmt->execute()) {
-        $message = "Account created successfully. Please log in to continue.";
+        $message = "Account created successfully. Please log in to";
         header("Location: Login.php?message=" . urlencode($message)); 
         exit();
 

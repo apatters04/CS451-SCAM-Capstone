@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?><
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,7 +17,7 @@
 <div class="header">        
         <h1>CSEE GTA Application</h1>
         <ul>
-            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
             <li><a href="Login.php">Login</a></li>

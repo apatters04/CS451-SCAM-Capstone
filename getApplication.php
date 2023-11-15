@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $mysqli = new mysqli("localhost", "root", "", "cs451r");
 if($mysqli->connect_error) {
     exit('Could not connect');
@@ -31,7 +33,7 @@ if ($stmt) {
     $stmt->store_result();
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp);
 
-    echo "<table class='table table-hover sortable'>";
+    echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
     echo "<th>First Name</th>";
