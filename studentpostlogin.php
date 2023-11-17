@@ -1,12 +1,42 @@
 <?php
 session_start();
 
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "CS451R";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // Check if the user is not logged in
 if (!isset($_SESSION['idNo'])) {
     $message = $_SESSION['idNo'] . "You need to be logged in to access this page. Please log in below.";
     header("Location: Login.php?message=" . urlencode($message)); 
     exit();
 }
+
+// Get user information from the database and set it in the session
+$idNo = $_SESSION['idNo'];
+$sqlUserInfo = "SELECT firstname, lastname, studentID, email, phoneNo FROM login WHERE idNo = $idNo";
+$resultUserInfo = $conn->query($sqlUserInfo);
+
+if ($resultUserInfo->num_rows > 0) {
+    $row = $resultUserInfo->fetch_assoc();
+
+    // Store user information in sessions
+    $_SESSION['firstname'] = $row['firstname'];
+    $_SESSION['lastname'] = $row['lastname'];
+    $_SESSION['studentID'] = $row['studentID'];
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['phoneNo'] = $row['phoneNo'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,31 +72,6 @@ if (!isset($_SESSION['idNo'])) {
 
     <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $password = ""; 
-    $dbname = "CS451R";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $idNo = $_SESSION['idNo'];
-$sqlUserInfo = "SELECT firstname, lastname, studentID, email, phoneNo FROM login WHERE idNo = $idNo";
-    $resultUserInfo = $conn->query($sqlUserInfo);
-
-if ($resultUserInfo->num_rows > 0) {
-    $row = $resultUserInfo->fetch_assoc();
-
-    // Store user information in sessions
-    $_SESSION['firstname'] = $row['firstname'];
-    $_SESSION['lastname'] = $row['lastname'];
-    $_SESSION['studentID'] = $row['studentID'];
-    $_SESSION['email'] = $row['email'];
-    $_SESSION['phoneNo'] = $row['phoneNo'];
-}
 
     $studentID = $_SESSION['studentID'];
 
