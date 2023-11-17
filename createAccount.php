@@ -7,10 +7,8 @@ $username = "root";
 $password = "";
 $dbname = "cs451r";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -24,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Use prepared statement to prevent SQL injection
-    $stmt = $conn->prepare("INSERT INTO login (firstName, lastName, email, phoneNo, studentID, username, password) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssiss", $firstName, $lastName, $studentID, $email,$phoneNo, $username, $password);
+    $stmt = $conn->prepare("INSERT INTO login (firstName, lastName, email, phoneNo, studentID, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssisiss", $firstName, $lastName, $email, $phoneNo, $studentID, $username, $password);
+
 
     if ($stmt->execute()) {
         $message = "Account created successfully. Please log in to";
