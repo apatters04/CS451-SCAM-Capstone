@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     $stmt = $conn->prepare("INSERT INTO login (firstName, lastName, email, phoneNo, studentID, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssisiss", $firstName, $lastName, $email, $phoneNo, $studentID, $username, $password);
+    $stmt->bind_param("sssiiss", $firstName, $lastName, $email, $phoneNo, $studentID, $username, $password);
 
 
     if ($stmt->execute()) {
