@@ -21,7 +21,41 @@ session_start();
             <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
-            <li><a href="Login.php">Admin Login</a></li>
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = ""; 
+            $dbname = "CS451R";
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $idNo = $_SESSION['idNo'];
+            $sqlUserInfo = "SELECT firstname, lastname, studentID FROM login WHERE idNo = $idNo";
+            $resultUserInfo = $conn->query($sqlUserInfo);
+
+            if ($resultUserInfo->num_rows > 0) {
+            $row = $resultUserInfo->fetch_assoc();
+
+            // Store user information in sessions
+            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['studentID'] = $row['studentID'];
+            }
+
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
+            }
+            // Check if the user is logged in
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+            } else {
+                echo '<li><a href="Login.php">Login</a></li>';
+            }
+            ?>
         </ul>
     </div>
 

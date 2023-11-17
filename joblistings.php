@@ -20,7 +20,17 @@ session_start();
             <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
-            <li><a href="Login.php">Login</a></li>
+            <?php
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
+            }
+            // Check if the user is logged in
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+            } else {
+                echo '<li><a href="Login.php">Login</a></li>';
+            }
+            ?>
         </ul>
     </div>
     <div class="my-container">

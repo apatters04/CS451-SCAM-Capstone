@@ -10,7 +10,6 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -23,7 +22,17 @@ session_start();
             <li><a href="Homepage.php">Homepage</a></li>
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
-            <li><a href="Login.php">Login</a></li>
+            <?php
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
+            }
+            // Check if the user is logged in
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+            } else {
+                echo '<li><a href="Login.php">Login</a></li>';
+            }
+            ?>
         </ul>
     </div>
     <br>

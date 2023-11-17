@@ -18,7 +18,6 @@ if (!isset($_SESSION['idNo'])) {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
 <style>
@@ -99,10 +98,20 @@ button:hover {
     <div class="header">        
         <h1>CSEE GTA Application</h1>
         <ul>
-            <li><a href="Homepage.html">Homepage</a></li>            
+            <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
-            <li><a href="Login.php">Login</a></li>
+            <?php
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
+            }
+            // Check if the user is logged in
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+            } else {
+                echo '<li><a href="Login.php">Login</a></li>';
+            }
+            ?>
         </ul>
     </div>
 
@@ -111,18 +120,18 @@ button:hover {
     <form id="regForm" action="submit.php" method="post" enctype="multipart/form-data">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
-            <h1 id="blue">Personal Information</h1>
+        <h1 id="blue">Personal Information</h1>
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" placeholder="First" required>
+            <input type="text" id="firstName" name="firstName" placeholder="First" required value="<?php echo isset($_SESSION['firstname']) ? htmlspecialchars($_SESSION['firstname']) : ''; ?>">
 
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Last" required>
+            <input type="text" id="lastName" name="lastName" placeholder="Last" required value="<?php echo isset($_SESSION['lastname']) ? htmlspecialchars($_SESSION['lastname']) : ''; ?>">
 
             <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" placeholder="username@umsystem.edu" required>
+            <input type="email" id="email" name="email" placeholder="username@umsystem.edu" required value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>">
 
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="(XXX) XXX-XXXX" required>
+            <label for="phoneNo">Phone Number:</label>
+            <input type="tel" id="phoneNo" name="phoneNo" placeholder="(XXX) XXX-XXXX" required value="<?php echo isset($_SESSION['phoneNo']) ? htmlspecialchars($_SESSION['phoneNo']) : ''; ?>">
         </div>
 
         <div class="tab">
