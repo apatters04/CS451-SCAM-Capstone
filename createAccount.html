@@ -32,7 +32,8 @@
 </head>
 <body>
     <div class="header">        
-        <h1>Create an Account</h1>
+        <img src="UMKC_header_logo.png" style="width:20%;">
+        <hr class="solid">
         <ul>
             <li><a href="Homepage.php">Homepage</a></li>            
             <li><a href="joblistings.php">Job Availability</a></li>
@@ -41,30 +42,42 @@
         </ul>
     </div>
 <form action="createAccount.php" method="post">
-    <div class="my-container">
+    <div class="container">        
+        <h1 id="blue">Create an account</h1>
         <br>
-        <label for="firstName"><b>First Name</b></label>
-        <input type="text" placeholder="Enter first name" name="firstName" required>
-        <br>
-        <label for="lastName"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter last name" name="lastName" required>
-        <br>
-        <label for="email"><b>Email Address</b></label>
-        <input type="email" placeholder="Enter your email address" name="email" required>
-        <br>
-        <label for="phoneNo"><b>Phone Number</b></label>
-        <input type="tel" placeholder="Enter phone number" name="phoneNo" required>
-        <br>
-        <label for="studentID"><b>Student ID</b></label>
-        <input type="number" placeholder="Enter student ID" name="studentID" required>
-        <br>
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-        <br>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-    
-        <button type="submit" style="display: inline-block;">Create Account</button>
+        <div class="row">
+            <div class="col">
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" placeholder="Enter first name" name="firstName" required>
+            </div>
+            <div class="col">
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" placeholder="Enter last name" name="lastName" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" placeholder="Enter your email address" name="email" required>
+            </div>
+            <div class="col">
+                <label for="phoneNo"><b>Phone Number</b></label>
+                <input type="tel" placeholder="Enter phone number" name="phoneNo" required>
+            </div>
+        </div>
+                
+                <label for="studentID"><b>Student ID</b></label>
+                <input type="number" placeholder="Enter student ID" name="studentID" required>
+            
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <button type="submit" >Create Account</button>
+        </div>
     </div>
 </form>
 
