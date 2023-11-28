@@ -51,6 +51,10 @@ li {
   float: left;
 }
 
+li:nth-last-child(-n+2)#user {
+  float: right;
+}
+
 li:last-child {
   float: right;
 }
@@ -117,8 +121,10 @@ img.logo {
 
 
 .my-container {
-  padding-left: 500px;
-  padding-right: 500px;
+  display: block;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom:50px;
 }
 
 div#appform{
