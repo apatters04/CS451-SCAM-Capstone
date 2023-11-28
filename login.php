@@ -13,8 +13,9 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="header my-container">        
+<div class="header">        
         <img src="UMKC_header_logo.png" style="width:20%;">
+        <hr class="solid">
         <ul>
             <li><a href="Homepage.php">Homepage</a></li>
             <li><a href="joblistings.php">Job Availability</a></li>
@@ -26,7 +27,7 @@ session_start();
             }
             // Check if the user is logged in
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+                echo '<li><a href="logout.php" style="color: white;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
             } else {
                 echo '<li id="user"><a href="Login.php">Login</a></li>';
                 echo '<li id="user"><a href="createAccount.html">Register</a></li>';

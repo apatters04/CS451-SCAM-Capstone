@@ -16,11 +16,30 @@ session_start();
 
 <body>
 <div class="header">        
-        <h1>CSEE GTA Admin Application View</h1>
+        <img src="UMKC_header_logo.png" style="width:20%;">
+        <hr class="solid">
         <ul>
-            <li><a href="Homepage.php">Homepage</a></li>            
+            <li><a href="Homepage.php">Homepage</a></li>
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
+        
+            <?php
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
+                echo '<li><a href="postlogin.php">View Student Applications</a></li>';
+            }
+            // Check if the user is logged in
+            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
+                echo '<li><a href="logout.php" style="color: white;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
+            } else {
+                echo '<li id="user"><a href="Login.php">Login</a></li>';
+                echo '<li id="user"><a href="createAccount.html">Register</a></li>';
+            }
+            ?>
+        
+        </ul>
+        
+    </div>
             <?php
             $servername = "localhost";
             $username = "root";
@@ -46,15 +65,6 @@ session_start();
             $_SESSION['studentID'] = $row['studentID'];
             }
 
-            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
-            }
-            // Check if the user is logged in
-            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li><a href="logout.php" style="color: black;">' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . ' - <span style="color: #ffd30a;">Logout</span></a></li>';
-            } else {
-                echo '<li><a href="Login.php">Login</a></li>';
-            }
             ?>
         </ul>
     </div>

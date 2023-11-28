@@ -27,11 +27,14 @@ h2#urgent{
 }
 
 .header {
-  padding: 30px;
   text-align: center;
   background: #0072bb;
   color: #ffd30a;
   font-size: 30px;
+}
+
+hr.solid {
+  border-top: 7px solid #ffd30a;
 }
 
 nav {
