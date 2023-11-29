@@ -22,7 +22,7 @@ if (!isset($_SESSION['idNo'])) {
 }
 
 // Get user information from the database and set it in the session
-$sqlUserInfo = "SELECT firstname, lastname, studentID, email, phoneNo FROM login WHERE idNo = $idNo";
+$sqlUserInfo = "SELECT firstname, lastname, studentID, email, phoneNo,type FROM login WHERE idNo = $idNo";
 $resultUserInfo = $conn->query($sqlUserInfo);
 
 if ($resultUserInfo->num_rows > 0) {
@@ -34,6 +34,7 @@ if ($resultUserInfo->num_rows > 0) {
     $_SESSION['studentID'] = $row['studentID'];
     $_SESSION['email'] = $row['email'];
     $_SESSION['phoneNo'] = $row['phoneNo'];
+    $_SESSION['type'] = $row['type'];
 
 }
 
