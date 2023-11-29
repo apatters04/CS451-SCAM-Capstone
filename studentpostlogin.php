@@ -5,7 +5,7 @@ $servername = "localhost";
 $username = "root";
 $password = ""; 
 $dbname = "CS451R";
-
+$idNo = $_SESSION['idNo'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -22,7 +22,6 @@ if (!isset($_SESSION['idNo'])) {
 }
 
 // Get user information from the database and set it in the session
-$idNo = $_SESSION['idNo'];
 $sqlUserInfo = "SELECT firstname, lastname, studentID, email, phoneNo FROM login WHERE idNo = $idNo";
 $resultUserInfo = $conn->query($sqlUserInfo);
 
@@ -35,6 +34,7 @@ if ($resultUserInfo->num_rows > 0) {
     $_SESSION['studentID'] = $row['studentID'];
     $_SESSION['email'] = $row['email'];
     $_SESSION['phoneNo'] = $row['phoneNo'];
+
 }
 
 ?>
@@ -81,10 +81,8 @@ if ($resultUserInfo->num_rows > 0) {
     <?php
 
 
-    $studentID = $_SESSION['studentID'];
-
     $result = $conn->prepare("SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
-    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, description, serveInstructor, timestamp, status FROM application WHERE studentID IN (SELECT studentID FROM login WHERE studentID LIKE $studentID)");
+    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, description, serveInstructor, timestamp, status FROM application WHERE idNo = $idNo");
    
     if ($result) {
         $result->execute();
@@ -142,7 +140,7 @@ if ($resultUserInfo->num_rows > 0) {
     
         $result->close();
     } else {
-        echo "Error in query execution: " . $mysqli->error;
+        echo "Error in query execution: " . $conn->error;
     }
     ?>
 </body>

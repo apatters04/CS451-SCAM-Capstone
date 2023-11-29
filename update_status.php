@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mysqli = new mysqli("localhost", "root", "", "cs451r");
     if ($mysqli->connect_error) {

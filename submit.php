@@ -128,10 +128,10 @@ session_start();
             $internationalStudentsCheckbox  = 0;
         }
         $serveInstructor = $_POST['serveInstructor'];
-
         // Insert data into database
-        $sql = "INSERT INTO application (firstName, lastName, studentID, email, phoneNumber, currentLevel, graduatingSemester, graduatingYear, GPA, hoursCompleted, degree, major, applyingJob, internationalStudentsCheckbox, serveInstructor, GTACert, resume)
-        VALUES ('$firstName', '$lastName', '$studentID', '$email', '$phoneNo', '$currentLevel', '$graduatingSemester', '$graduatingYear', '$GPA', '$hoursCompleted', '$degree', '$major', '$applyingJob', '$internationalStudentsCheckbox', '$serveInstructor', '$GTACertFilePath', '$resumeFilePath')";
+        $idNo = $_SESSION['idNo'];
+        $sql = "INSERT INTO application (idNo, firstName, lastName, studentID, email, phoneNumber, currentLevel, graduatingSemester, graduatingYear, GPA, hoursCompleted, degree, major, applyingJob, internationalStudentsCheckbox, serveInstructor, GTACert, resume)
+        VALUES ('$idNo', '$firstName', '$lastName', '$studentID', '$email', '$phoneNo', '$currentLevel', '$graduatingSemester', '$graduatingYear', '$GPA', '$hoursCompleted', '$degree', '$major', '$applyingJob', '$internationalStudentsCheckbox', '$serveInstructor', '$GTACertFilePath', '$resumeFilePath')";
 
         if ($conn->query($sql) === true) {
             echo "<br>";
