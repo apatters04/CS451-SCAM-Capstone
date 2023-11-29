@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     }
 
 $idNo = $_SESSION['idNo'];
-$sqlUserInfo = "SELECT firstname, lastname, studentID, type, phoneNo FROM login WHERE idNo = $idNo";
+$sqlUserInfo = "SELECT firstname, lastname, studentID, type, phoneNo, email FROM login WHERE idNo = $idNo";
 $resultUserInfo = $conn->query($sqlUserInfo);
 
 if ($resultUserInfo->num_rows > 0) {
@@ -24,6 +24,7 @@ $_SESSION['lastname'] = $row['lastname'];
 $_SESSION['studentID'] = $row['studentID'];
 $_SESSION['type'] = $row['type'];
 $_SESSION['phoneNo'] = $row['phoneNo'];
+$_SESSION['email'] = $row['email'];
 }
 
     
