@@ -20,10 +20,10 @@ session_start();
             <li><a href="joblistings.php">Job Availability</a></li>
             <li><a href="application.php">Application</a></li>
             <?php
-            if (isset($_SESSION['type']) == 'admin') {
+            if (($_SESSION['type']) == 'admin') {
                 echo '<li><a href="postlogin.php">View Applications</a></li>';
             }
-            else{
+            elseif (($_SESSION['type']) == 'student'){
                 echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
             }
             // Check if the user is logged in
