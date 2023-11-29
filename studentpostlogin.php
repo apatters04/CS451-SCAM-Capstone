@@ -60,7 +60,6 @@ if ($resultUserInfo->num_rows > 0) {
             <?php
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
                 echo '<li><a href="postlogin.php"> View Applications</a></li>';
-                echo '<li><a href="postlogin.php">View Student Applications</a></li>';
             }
             // Check if the user is logged in
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
