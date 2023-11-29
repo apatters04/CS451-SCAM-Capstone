@@ -58,8 +58,11 @@ if ($resultUserInfo->num_rows > 0) {
             <li><a href="application.php">Application</a></li>
         
             <?php
-            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li><a href="studentpostlogin.php"> View Applications</a></li>';
+            if (isset($_SESSION['type']) == 'admin') {
+                echo '<li><a href="postlogin.php">View Applications</a></li>';
+            }
+            else{
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
             }
             // Check if the user is logged in
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
