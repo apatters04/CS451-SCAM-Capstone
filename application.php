@@ -105,7 +105,7 @@ button:hover {
         
             <?php
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li><a href="postlogin.php"> View Applications</a></li>';
+                echo '<li><a href="postlogin.php"> My Applications</a></li>';
                 echo '<li><a href="postlogin.php">View Student Applications</a></li>';
             }
             // Check if the user is logged in
