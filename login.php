@@ -22,8 +22,11 @@ session_start();
             <li><a href="application.php">Application</a></li>
         
             <?php
-            if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {
-                echo '<li id="user"><a href="studentpostlogin.php">My Applications</a></li>';
+            if (isset($_SESSION['type']) == 'admin') {
+                echo '<li><a href="postlogin.php">View Applications</a></li>';
+            }
+            elseif (isset($_SESSION['type']) == 'student'){
+                echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
             }
             // Check if the user is logged in
             if (isset($_SESSION['idNo']) && $_SESSION['idNo'] != NULL) {

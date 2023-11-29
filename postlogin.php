@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     }
 
 $idNo = $_SESSION['idNo'];
-$sqlUserInfo = "SELECT firstname, lastname, studentID, type FROM login WHERE idNo = $idNo";
+$sqlUserInfo = "SELECT firstname, lastname, studentID, type, phoneNo FROM login WHERE idNo = $idNo";
 $resultUserInfo = $conn->query($sqlUserInfo);
 
 if ($resultUserInfo->num_rows > 0) {
@@ -23,6 +23,7 @@ $_SESSION['firstname'] = $row['firstname'];
 $_SESSION['lastname'] = $row['lastname'];
 $_SESSION['studentID'] = $row['studentID'];
 $_SESSION['type'] = $row['type'];
+$_SESSION['phoneNo'] = $row['phoneNo'];
 }
 
     
@@ -53,7 +54,7 @@ $_SESSION['type'] = $row['type'];
             if (isset($_SESSION['type']) == 'admin') {
                 echo '<li><a href="postlogin.php">View Applications</a></li>';
             }
-            else{
+            elseif (isset($_SESSION['type']) == 'student'){
                 echo '<li><a href="studentpostlogin.php">My Applications</a></li>';
             }
             // Check if the user is logged in
