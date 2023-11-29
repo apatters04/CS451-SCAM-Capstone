@@ -1,5 +1,30 @@
 <?php
 session_start();
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "CS451R";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+
+$idNo = $_SESSION['idNo'];
+$sqlUserInfo = "SELECT firstname, lastname, studentID FROM login WHERE idNo = $idNo";
+$resultUserInfo = $conn->query($sqlUserInfo);
+
+if ($resultUserInfo->num_rows > 0) {
+$row = $resultUserInfo->fetch_assoc();
+
+// Store user information in sessions
+$_SESSION['firstname'] = $row['firstname'];
+$_SESSION['lastname'] = $row['lastname'];
+$_SESSION['studentID'] = $row['studentID'];
+}
+
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,32 +64,7 @@ session_start();
         </ul>
         
     </div>
-            <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = ""; 
-            $dbname = "CS451R";
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $idNo = $_SESSION['idNo'];
-            $sqlUserInfo = "SELECT firstname, lastname, studentID FROM login WHERE idNo = $idNo";
-            $resultUserInfo = $conn->query($sqlUserInfo);
-
-            if ($resultUserInfo->num_rows > 0) {
-            $row = $resultUserInfo->fetch_assoc();
-
-            // Store user information in sessions
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
-            $_SESSION['studentID'] = $row['studentID'];
-            }
-
-            ?>
+            
         </ul>
     </div>
 
