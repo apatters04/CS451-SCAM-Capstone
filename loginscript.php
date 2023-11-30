@@ -38,7 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         exit();
     } else {
-        echo "Invalid username or password.";
+        session_destroy();
+
+        header("Location: Login.php?message=Invalid+username+or+password.+Please+create+an+account+below");
+        exit();
     }
 
     $stmt->close();
