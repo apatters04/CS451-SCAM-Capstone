@@ -130,6 +130,10 @@ img.logo {
   padding-bottom:50px;
 }
 
+#txtHint{
+  width: 100px;
+}
+
 div#appform{
   float:left;
   padding-left: 25%;
