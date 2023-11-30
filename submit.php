@@ -8,13 +8,14 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applications</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <div class="header">
-        <h1>CSEE GTA Admin Application View</h1>
+    <img src="UMKC_header_logo.png" style="width:20%;">
+        <hr class="solid">
         <ul>
             <li><a href="Homepage.php">Homepage</a></li>
             <li><a href="joblistings.php">Job Availability</a></li>
@@ -148,19 +149,20 @@ session_start();
 
     ?>
     <br>
-    <div class="row" >
-        <div class="col-sm" style="display:flex; justify-content: center; align-items: left;">
-            <a href="application.html"><button class="homebutton">Apply Now!</button></a>        
-        </div>
-        <div class="col-sm" style="display:flex; justify-content: left; align-items: left;">
+    <div class="my-container">
+        <div class="row" >
+            <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
+            <a href="application.php"><button class="homebutton">Apply Now!</button></a>     
+            </div>
+            <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
                 <a href="joblistings.php"><button class="homebutton">Available Jobs</button></a>  
-         </div>
+            </div>
 
-        <div class="col-sm" style="display:flex; justify-content: left; align-items: left;">
-            <a href="Login.html"><button class="homebutton">Admin Login</button></a>  
-        </div>          
-                   
-             
+            <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
+                <a href="Login.php"><button class="homebutton">Admin Login</button></a>  
+            </div>          
+                    
+                
         </div>
     </div>
 </html>

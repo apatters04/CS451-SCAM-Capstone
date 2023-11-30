@@ -34,6 +34,7 @@ h2#urgent{
 }
 
 hr.solid {
+  opacity: 1;
   border-top: 7px solid #ffd30a;
 }
 

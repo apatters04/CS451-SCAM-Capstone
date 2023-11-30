@@ -66,21 +66,24 @@ session_start();
     
         </p>
     <div style="display:flex; justify-content: center; align-items: center;">
-        <a href="application.php"><button class="homebutton">Apply Now!</button></a>        
+             
     </div>
 
     <div class="row" >
-        <div class="col-6" style="display:flex; justify-content: right; align-items: center;">
+        <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
+        <a href="application.php"><button class="homebutton">Apply Now!</button></a>     
+        </div>
+        <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
             <a href="joblistings.php"><button class="homebutton">Available Jobs</button></a>  
         </div>
 
-        <div class="col-6" style="display:flex; justify-content: left; align-items: center;">
+        <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
             <a href="Login.php"><button class="homebutton">Admin Login</button></a>  
         </div>          
                 
             
     </div>
-    </div>
+</div>
     
 </body>
 </html>

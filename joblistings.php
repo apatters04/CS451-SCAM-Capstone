@@ -7,7 +7,7 @@ session_start();
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <title>Job Listings</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -100,7 +100,7 @@ session_start();
             </div>
         </form>
         <br>
-        <div id="jobListings" style="max-height: 500px; overflow: auto; border: 5px inset #0072bb">Job listings will be listed here...</div>
+        <div id="jobListings" class="table-responsive" style="max-height: 500px; overflow: auto; border: 5px inset #0072bb">Job listings will be listed here...</div>
     </div>
 
     <script>
