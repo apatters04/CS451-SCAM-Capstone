@@ -136,7 +136,12 @@ session_start();
 
         if ($conn->query($sql) === true) {
             echo "<br>";
-            echo "Application submitted successfully!";
+            echo "<div style='text-align: center;'>";
+            echo "<p>";
+            echo "<h1 id='blue'>Application submitted successfully!</h1>";
+            echo "We will be reaching out to you about the status of your application soon!";
+            echo "</p>";
+            echo "</div>";
             echo "<br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
