@@ -49,7 +49,7 @@ session_start();
         
     </div>
 
-    
+    <br>
     <p><h1 id="blue">Welcome to the GTA Application!</h1></p>
 
 
