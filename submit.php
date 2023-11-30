@@ -75,21 +75,45 @@ session_start();
 
             // Check file size
             if ($_FILES[$fileInputName]["size"] > 500000) {
-                echo "Sorry, your file is too large. ";
+                echo "<div style='text-align: center;'>";
+                    echo "<p>";
+                    echo "<h1 id='urgent'> Sorry, your file is too large.</h1>";
+                    echo "Please submit your application again with smaller file size.";
+                    echo "<br>";
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "</p>";
+                    echo "</div>";
                 $uploadOk = 0;
                 echo "<br>";
             }
 
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded. ";
+                echo "<br>";
+                    echo "<div style='text-align: center;'>";
+                    echo "<p>";
+                    echo "<h1 id='urgent'> Sorry, your file was not uploaded.</h1>";
+                    echo "Please submit your application again with a different file type.";
+                    echo "<br>";
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "</p>";
+                    echo "</div>";
+                    echo "<br>";
             } else {
                 if (move_uploaded_file($_FILES[$fileInputName]["tmp_name"], $target_file)) {
                     echo "The file " . htmlspecialchars(basename($_FILES[$fileInputName]["name"])) . " has been uploaded. ";
                     return $target_file; // Return the file path
                     echo "<br>";
                 } else {
-                    echo "Sorry, there was an error uploading your file. ";
+                    echo "<br>";
+                    echo "<div style='text-align: center;'>";
+                    echo "<p>";
+                    echo "<h1 id='urgent'> Sorry, there was an error uploading your file.</h1>";
+                    echo "Please submit your application again with a different file type.";
+                    echo "<br>";
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "</p>";
+                    echo "</div>";
                     echo "<br>";
                 }
                 
