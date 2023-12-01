@@ -80,7 +80,7 @@ session_start();
                     echo "<h1 id='urgent'> Sorry, your file is too large.</h1>";
                     echo "Please submit your application again with smaller file size.";
                     echo "<br>";
-                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu";
                     echo "</p>";
                     echo "</div>";
                 $uploadOk = 0;
@@ -95,13 +95,13 @@ session_start();
                     echo "<h1 id='urgent'> Sorry, your file was not uploaded.</h1>";
                     echo "Please submit your application again with a different file type.";
                     echo "<br>";
-                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu";
                     echo "</p>";
                     echo "</div>";
                     echo "<br>";
             } else {
                 if (move_uploaded_file($_FILES[$fileInputName]["tmp_name"], $target_file)) {
-                    echo "The file " . htmlspecialchars(basename($_FILES[$fileInputName]["name"])) . " has been uploaded. ";
+                   // echo "The file " . htmlspecialchars(basename($_FILES[$fileInputName]["name"])) . " has been uploaded. ";
                     return $target_file; // Return the file path
                     echo "<br>";
                 } else {
@@ -111,7 +111,7 @@ session_start();
                     echo "<h1 id='urgent'> Sorry, there was an error uploading your file.</h1>";
                     echo "Please submit your application again with a different file type.";
                     echo "<br>";
-                    echo "If problems persist please contact us as CSEESupport@umkc.edu"
+                    echo "If problems persist please contact us as CSEESupport@umkc.edu";
                     echo "</p>";
                     echo "</div>";
                     echo "<br>";
