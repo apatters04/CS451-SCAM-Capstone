@@ -45,7 +45,7 @@ if ($resultUserInfo->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <title>Student's Applications Page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -83,6 +83,10 @@ if ($resultUserInfo->num_rows > 0) {
         </ul>
         
     </div>
+    <br>
+    <div class="my-container">
+            <h4>You can view your submitted applications and the status of review here.</h4>
+    </div>
     
 
     <?php
@@ -95,7 +99,7 @@ if ($resultUserInfo->num_rows > 0) {
         $result->execute();
         $result->store_result();
         $result->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $desc, $serv, $timestamp, $status);
-    
+        echo "<div class='my-container' style='max-height: 500px; overflow: auto; border: 5px inset #0072bb'>";
         echo "<table class='table table-hover'>";
         echo "<thead>";
         echo "<tr>";
@@ -143,6 +147,7 @@ if ($resultUserInfo->num_rows > 0) {
         }
     
         echo "</tbody>";
+        echo "</div>";
         echo "</table>";
     
         $result->close();

@@ -26,6 +26,10 @@ h2#urgent{
   color: red;
 }
 
+h4{
+  text-align: center;
+}
+
 .header {
   text-align: center;
   background: #0072bb;
