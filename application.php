@@ -31,7 +31,7 @@ body {
 
 #regForm {
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 50px auto;
   padding: 40px;
   width: 70%;
   min-width: 300px;
@@ -129,8 +129,6 @@ button:hover {
         
     </div>
 
-
-    
     <form id="regForm" action="submit.php" method="post" enctype="multipart/form-data">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
@@ -272,6 +270,7 @@ button:hover {
         </div>
 
     </form>
+    <br>
 
     <script>
         var currentTab = 0;

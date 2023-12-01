@@ -85,13 +85,10 @@ if ($resultUserInfo->num_rows > 0) {
     </div>
     <br>
     <div class="my-container">
-            <h4>You can view your submitted applications and the status of review here.</h4>
+        <br>
+        <h4>You can view your submitted applications and the status of review here.</h4>
     </div>
-    
-
     <?php
-
-
     $result = $conn->prepare("SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
     graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, description, serveInstructor, timestamp, status FROM application WHERE idNo = $idNo");
    
@@ -99,7 +96,7 @@ if ($resultUserInfo->num_rows > 0) {
         $result->execute();
         $result->store_result();
         $result->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $desc, $serv, $timestamp, $status);
-        echo "<div class='my-container' style='max-height: 500px; overflow: auto; border: 5px inset #0072bb'>";
+        echo "<div style='max-height: 500px; overflow: auto; border: 5px inset #0072bb;'>";
         echo "<table class='table table-hover'>";
         echo "<thead>";
         echo "<tr>";
@@ -155,5 +152,6 @@ if ($resultUserInfo->num_rows > 0) {
         echo "Error in query execution: " . $conn->error;
     }
     ?>
+    
 </body>
 </html>

@@ -68,7 +68,7 @@ session_start();
     <div style="display:flex; justify-content: center; align-items: center;">
              
     </div>
-
+    <br>
     <div class="row" >
         <div class="col-4" style="display:flex; justify-content: center; align-items: center;">
         <a href="application.php"><button class="homebutton">Apply Now!</button></a>     
@@ -81,8 +81,10 @@ session_start();
             <a href="Login.php"><button class="homebutton">Admin Login</button></a>  
         </div>          
                 
-            
-    </div>
+     <br>
+    </div>      
+     <br>      
+     <br>
 </div>
     
 </body>

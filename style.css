@@ -2,10 +2,13 @@
   font-family: 'Trebuchet MS', sans-serif;  
 }
 
-body{
-  background-color: #FFFFFF;
-  color: #344e94;
+html{
+  background-color: #0072bb;
 }
+body{
+  background-color: white;
+  color: #344e94;
+
 
 p{
   text-align: center;
@@ -130,6 +133,8 @@ img.logo {
 
 .my-container {
   display: block;
+  margin-left: 200px;
+  margin-right: 200px;
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom:50px;

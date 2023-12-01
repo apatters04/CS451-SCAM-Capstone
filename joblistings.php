@@ -53,10 +53,8 @@ session_start();
         <br>
         <h1 id="blue"><u>Available Positions</u></h1>
         <p>All available positions can be viewed here for available courses and instructors in need of a grader or lab instructor.
-
         Please do not submit resumes or applications directly to professors.
         </p>
-        <br>
         <form>
             <div class="row">
                 <div class="col-4" style="float:left;">
@@ -100,7 +98,7 @@ session_start();
             </div>
         </form>
         <br>
-        <div id="jobListings" class="table-responsive" style="max-height: 500px; overflow: auto; border: 5px inset #0072bb">Job listings will be listed here...</div>
+        <div id="jobListings" style="max-height: 400px; overflow: auto; border: 5px inset #0072bb;">Job listings will be listed here...</div>
     </div>
 
     <script>
