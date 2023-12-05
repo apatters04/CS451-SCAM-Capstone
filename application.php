@@ -133,23 +133,23 @@ button:hover {
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
         <h1 id="blue">Personal Information</h1>
-            <label for="firstName">First Name:</label>
+            <label for="firstName">First Name:<b id="req">*</b></label>
             <input type="text" id="firstName" name="firstName" placeholder="First" required value="<?php echo isset($_SESSION['firstname']) ? htmlspecialchars($_SESSION['firstname']) : ''; ?>">
 
-            <label for="lastName">Last Name:</label>
+            <label for="lastName">Last Name:<b id="req">*</b></label>
             <input type="text" id="lastName" name="lastName" placeholder="Last" required value="<?php echo isset($_SESSION['lastname']) ? htmlspecialchars($_SESSION['lastname']) : ''; ?>">
 
-            <label for="email">Email Address:</label>
+            <label for="email">Email Address:<b id="req">*</b></label>
             <input type="email" id="email" name="email" placeholder="username@umsystem.edu" required value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>">
 
-            <label for="phoneNo">Phone Number:</label>
+            <label for="phoneNo">Phone Number:<b id="req">*</b></label>
             <input type="tel" id="phoneNo" name="phoneNo" placeholder="(XXX) XXX-XXXX" required value="<?php echo isset($_SESSION['phoneNo']) ? htmlspecialchars($_SESSION['phoneNo']) : ''; ?>">
         </div>
 
         <div class="tab">
             <h1 id="blue">Academic Information</h1>
-            <label for="studentID">Student ID:</label>
-            <input type="number" id="studentID" name="studentID" placeholder="ID #" required>
+            <label for="studentID">Student ID:<b id="req">*</b></label>
+            <input type="number" id="studentID" name="studentID" placeholder="ID #" required value="<?php echo isset($_SESSION['studentID']) ? htmlspecialchars($_SESSION['studentID']) : ''; ?>">
 
             <label for="GPA">UMKC Cumulative GPA:</label>
             <input type="number" id="GPA"  max="4.00" step=".01" name="GPA" placeholder="(leave blank if first semester is in progress)">
@@ -198,42 +198,32 @@ button:hover {
             <h1 id="blue">Application Details</h1>
             <br>
             <div class="row">
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="applyingJob">Applying For: </label>
-                        </div>
-                        
-                        <div class="col-sm">
-                            <select id="applyingJob" name="applyingJob">
-                                <option value="Grader">Grader</option>
-                                <option value="Lab Instructor">Lab Instructor</option>
-                                <option value="Both">Both</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="col-6">
+                    <span>Applying For: </span>
+                    <select id="applyingJob" name="applyingJob" style="display: inline-block;">
+                        <option value="Grader">Grader</option>
+                        <option value="Lab Instructor">Lab Instructor</option>
+                        <option value="Both">Both</option>
+                    </select>
+                    <br>
                     <p style="float: left; font-size: 12px; color:#2e89c2">*To apply for Lab instructor positions you must be GTA Certified</p>
                 </div>
             
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label for="internationalStudentsCheckbox"> International Student? </label>
-                        </div>
-                        
-                        <div class="col-sm" style="float:left">
-                            <input type="checkbox" id="internationalStudentsCheckbox" name="internationalStudentsCheckbox" onclick="showhideGTA(this)">
-                            </div>
-                    </div>
+                <div class="col-6" style="justify-content:right;">
+                    <span> International Student? </span>
+                    <select id="internationalStudentsCheckbox" name="internationalStudentsCheckbox" style="display: inline-block;">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+
                 </div>
+
             </div>
-            <br>
+
             <div class="row">
-                <div class="col-sm">
-                    <div id="GTACert">
-                        <label for="GTACert">Upload GTA Certification (if applicable):</label>
-                        <input type="file" id="GTACert" name="GTACert">
-                    </div>
+                <div id="GTACert">
+                    <label for="GTACert">Upload GTA Certification (if applicable):</label>
+                    <input type="file" id="GTACert" name="GTACert">
                 </div>
             </div>
             <br>
@@ -249,8 +239,8 @@ button:hover {
             <!--<label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" cols="50"></textarea>-->
             <br>
-            <label for="serveInstructor">Courses you could serve as lab instructor or grader for (ex. CS201L/ CS5525/ ECE216):</label>
-            <input type="text" id="serveInstructor" name="serveInstructor"  rows="4" cols="50" required>
+            <label for="serveInstructor">Courses you could serve as lab instructor or grader for (separated by a space):<b id="req">*</b></label>
+            <input type="text" id="serveInstructor" name="serveInstructor"  rows="4" cols="50" placeholder="CS101 CS201L ECE216" required>
             
         </div>
 
