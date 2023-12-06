@@ -96,9 +96,10 @@ $_SESSION['email'] = $row['email'];
         </select>
     </form>
     <br>
+    <div class="my-container">
+        <h4>You can view and update the status of submitted applications.</h4>
+    </div>
     <div id="txtHint">Application info will be listed here...</div>
-
-    <br>
     <script>
         function loadData(level, major) {
             const xhttp = new XMLHttpRequest();

@@ -1,6 +1,3 @@
-
-
-
 <?php
 session_start();
 
@@ -39,7 +36,7 @@ if ($stmt) {
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp, $status);
 
     echo "<form method='post' action='update_status.php'>";
-    echo "<div class='table-responsive'>";
+    echo "<div style='max-height: 600px; overflow: auto; border: 5px inset #0072bb;'>";
     echo "<table class='table table-hover table-auto'>";
     echo "<thead>";
     echo "<tr>";
@@ -68,7 +65,7 @@ if ($stmt) {
         echo "<td>" . $fname . " ". $lname ."</td>";
         echo "<td>" . $sid . "</td>";
         echo "<td>" . $email . "</td>";
-        $formattedPhoneNumber = sprintf("(%s)-%s-%s",
+        $formattedPhoneNumber = sprintf("(%s) %s-%s",
             substr($phoneNumber, 0, 3),
             substr($phoneNumber, 3, 3),
             substr($phoneNumber, 6)

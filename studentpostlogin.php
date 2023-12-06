@@ -123,12 +123,12 @@ if ($resultUserInfo->num_rows > 0) {
             echo "<td>" . $fname . " ". $lname . "</td>";
             echo "<td>" . $sid . "</td>";
             echo "<td>" . $email . "</td>";
-            $formattedPhoneNumber = sprintf("(%s) - %s - %s",
+            $formattedPhoneNumber = sprintf("(%s) %s-%s",
                 substr($phoneNumber, 0, 3),
                 substr($phoneNumber, 3, 3),
                 substr($phoneNumber, 6)
                     );
-            echo "<td>" . $phoneNumber . "</td>";
+            echo "<td>" . $formattedPhoneNumber . "</td>";
             echo "<td>" . $currentlevel . "</td>";
             echo "<td>" . $gpa . "</td>";
             echo "<td>" . $degree . "</td>";
