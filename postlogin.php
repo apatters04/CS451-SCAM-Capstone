@@ -94,7 +94,7 @@ if ($resultUserInfo->num_rows > 0) {
     <div>
         <?php
         if (isset($_GET['statusUpdateSuccess']) && $_GET['statusUpdateSuccess'] == 1) {
-            echo '<div class="confirmation-message">Status update applied successfully.</div>';
+            echo '<div class="confirmation-message">Status updated successfully.</div>';
         } elseif (isset($_GET['statusUpdateError']) && $_GET['statusUpdateError'] == 1) {
             echo '<div class="error-message">Error updating status. Please try again.</div>';
         }
