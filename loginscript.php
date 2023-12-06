@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT idNo, type FROM login WHERE username=? AND password=?");
+    $stmt = $conn->prepare("SELECT idNo, type, firstname, lastname FROM login WHERE username=? AND password=?");
     $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $type = $row['type'];
         $idNo = $row['idNo'];
-
+        $_SESSION['firstname'] = $fname;
+        $_SESSION['firstname'] = $fname;
         $_SESSION['idNo'] = $idNo;
 
         if ($type == 'admin') {

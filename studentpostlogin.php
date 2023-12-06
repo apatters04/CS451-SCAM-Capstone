@@ -110,7 +110,7 @@ if ($resultUserInfo->num_rows > 0) {
         echo "<th>Graduating Semester/Year</th>";
         echo "<th>Hours Completed</th>";
         echo "<th>Applying Job</th>";
-        echo "<th>International Student</th>";
+        echo "<th>International Students</th>";
         echo "<th>Serve Instructor</th>";
         echo "<th>Timestamp</th>";
         echo "<th>Status</th>";
@@ -120,14 +120,14 @@ if ($resultUserInfo->num_rows > 0) {
     
         while ($result->fetch()) {
             echo "<tr>";
-            echo "<td>" . $fname . " ". $lname "</td>";
+            echo "<td>" . $fname . " ". $lname . "</td>";
             echo "<td>" . $sid . "</td>";
             echo "<td>" . $email . "</td>";
             echo "<td>" . $phoneNumber . "</td>";
             echo "<td>" . $currentlevel . "</td>";
             echo "<td>" . $gpa . "</td>";
             echo "<td>" . $degree . "</td>";
-            echo "<td>" . $gsem . " " . $gyear"</td>";
+            echo "<td>" . $gsem . " " . $gyear . "</td>";
             echo "<td>" . $hcomplete . "</td>";
             echo "<td>" . $applyjob . "</td>";
             echo "<td>" . $istu . "</td>";

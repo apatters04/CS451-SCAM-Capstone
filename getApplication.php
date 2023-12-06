@@ -53,7 +53,7 @@ if ($stmt) {
     echo "<th>Graduating Semester & Year</th>";
     echo "<th>Hours Completed</th>";
     echo "<th>Applying Job</th>";
-    echo "<th>International Student</th>";
+    echo "<th>International Students Checkbox</th>";
     echo "<th>GTA Certification</th>";
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
@@ -72,7 +72,7 @@ if ($stmt) {
         echo "<td>" . $currentlevel . "</td>";
         echo "<td>" . $gpa . "</td>";
         echo "<td>" . $degree . "</td>";
-        echo "<td>" . $gsem . " ".  $gyear. "</td>";
+        echo "<td>" . $gsem . " " .  $gyear . "</td>";
         echo "<td>" . $hcomplete . "</td>";
         echo "<td>" . $applyjob . "</td>";
         echo "<td>" . $istu . "</td>";
