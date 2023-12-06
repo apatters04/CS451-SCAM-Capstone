@@ -39,7 +39,6 @@ if ($stmt) {
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp, $status);
 
     echo "<form method='post' action='update_status.php'>";
-
     echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
@@ -53,7 +52,7 @@ if ($stmt) {
     echo "<th>Graduating Semester & Year</th>";
     echo "<th>Hours Completed</th>";
     echo "<th>Applying Job</th>";
-    echo "<th>International Students Checkbox</th>";
+    echo "<th>International Students</th>";
     echo "<th>GTA Certification</th>";
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
@@ -68,7 +67,12 @@ if ($stmt) {
         echo "<td>" . $fname . " ". $lname ."</td>";
         echo "<td>" . $sid . "</td>";
         echo "<td>" . $email . "</td>";
-        echo "<td>" . $phoneNumber . "</td>";
+        $formattedPhoneNumber = sprintf("(%s)-%s-%s",
+            substr($phoneNumber, 0, 3),
+            substr($phoneNumber, 3, 3),
+            substr($phoneNumber, 6)
+                );
+        echo "<td>" . $formattedPhoneNumber . "</td>";
         echo "<td>" . $currentlevel . "</td>";
         echo "<td>" . $gpa . "</td>";
         echo "<td>" . $degree . "</td>";
