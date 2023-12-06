@@ -147,16 +147,12 @@ session_start();
         $degree = $_POST['degree'];
         $major = $_POST['major'];
         $applyingJob = $_POST['applyingJob'];
-        if (isset($_POST['internationalStudentsCheckbox'])) {
-            $internationalStudentsCheckbox  = 1;
-        } else {
-            $internationalStudentsCheckbox  = 0;
-        }
+        $internationalStudent = $_POST['internationalStudent'];
         $serveInstructor = $_POST['serveInstructor'];
-        // Insert data into database
+
         $idNo = $_SESSION['idNo'];
-        $sql = "INSERT INTO application (idNo, firstName, lastName, studentID, email, phoneNumber, currentLevel, graduatingSemester, graduatingYear, GPA, hoursCompleted, degree, major, applyingJob, internationalStudentsCheckbox, serveInstructor, GTACert, resume)
-        VALUES ('$idNo', '$firstName', '$lastName', '$studentID', '$email', '$phoneNo', '$currentLevel', '$graduatingSemester', '$graduatingYear', '$GPA', '$hoursCompleted', '$degree', '$major', '$applyingJob', '$internationalStudentsCheckbox', '$serveInstructor', '$GTACertFilePath', '$resumeFilePath')";
+        $sql = "INSERT INTO application (idNo, firstName, lastName, studentID, email, phoneNumber, currentLevel, graduatingSemester, graduatingYear, GPA, hoursCompleted, degree, major, applyingJob, internationalStudent, serveInstructor, GTACert, resume)
+        VALUES ('$idNo', '$firstName', '$lastName', '$studentID', '$email', '$phoneNo', '$currentLevel', '$graduatingSemester', '$graduatingYear', '$GPA', '$hoursCompleted', '$degree', '$major', '$applyingJob', '$internationalStudent', '$serveInstructor', '$GTACertFilePath', '$resumeFilePath')";
 
         if ($conn->query($sql) === true) {
             echo "<br>";

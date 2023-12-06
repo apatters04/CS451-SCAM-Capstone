@@ -211,7 +211,7 @@ button:hover {
             
                 <div class="col-6" style="justify-content:right;">
                     <span> International Student? </span>
-                    <select id="internationalStudentsCheckbox" name="internationalStudentsCheckbox" style="display: inline-block;">
+                    <select id="internationalStudent" name="internationalStudent" style="display: inline-block;">
                         <option value="No">No</option>
                         <option value="Yes">Yes</option>
                     </select>

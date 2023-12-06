@@ -15,7 +15,7 @@ $major = isset($_GET['major']) ? $_GET['major'] : "";
 $statusOptions = array("Submitted", "Reviewing", "Rejected", "Interviewing");
 
 $sql = "SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
-    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, GTACert, description, serveInstructor, resume, timestamp, status FROM application WHERE 1 ";
+    graduatingYear, hoursCompleted, applyingJob, internationalStudent, GTACert, description, serveInstructor, resume, timestamp, status FROM application WHERE 1 ";
 
 if (!empty($level) && !empty($major)) {
     $sql .= "AND currentLevel = ? AND degree = ?";
@@ -53,7 +53,7 @@ if ($stmt) {
     echo "<th>Graduating Semester & Year</th>";
     echo "<th>Hours Completed</th>";
     echo "<th>Applying Job</th>";
-    echo "<th>International Students Checkbox</th>";
+    echo "<th>International Student</th>";
     echo "<th>GTA Certification</th>";
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";

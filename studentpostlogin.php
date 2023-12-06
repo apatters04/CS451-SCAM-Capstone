@@ -90,7 +90,7 @@ if ($resultUserInfo->num_rows > 0) {
     </div>
     <?php
     $result = $conn->prepare("SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
-    graduatingYear, hoursCompleted, applyingJob, internationalStudentsCheckbox, description, serveInstructor, timestamp, status FROM application WHERE idNo = $idNo");
+    graduatingYear, hoursCompleted, applyingJob, internationalStudent, description, serveInstructor, timestamp, status FROM application WHERE idNo = $idNo");
    
     if ($result) {
         $result->execute();
@@ -110,7 +110,7 @@ if ($resultUserInfo->num_rows > 0) {
         echo "<th>Graduating Semester/Year</th>";
         echo "<th>Hours Completed</th>";
         echo "<th>Applying Job</th>";
-        echo "<th>International Students Checkbox</th>";
+        echo "<th>International Student</th>";
         echo "<th>Serve Instructor</th>";
         echo "<th>Timestamp</th>";
         echo "<th>Status</th>";
