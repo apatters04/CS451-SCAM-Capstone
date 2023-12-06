@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mysqli = new mysqli("localhost", "root", "", "cs451r");
     if ($mysqli->connect_error) {
@@ -9,21 +10,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statuses = isset($_POST['status']) ? $_POST['status'] : [];
 
     foreach ($statuses as $key => $status) {
-        // Assuming studentID is the unique identifier for each application
         $studentID = $_POST['studentID'][$key];
-
-        // Update the status in the database
         $updateSql = "UPDATE application SET status = ? WHERE studentID = ?";
         $updateStmt = $mysqli->prepare($updateSql);
         $updateStmt->bind_param("ss", $status, $studentID);
-        $updateStmt->execute();
+
+        $updateSuccessful = $updateStmt->execute();
+
         $updateStmt->close();
     }
 
     $mysqli->close();
-}
 
-// Redirect back to the original page after updating status
-header("Location: postlogin.php");
-exit();
+    if ($updateSuccessful) {
+        header("Location: postlogin.php?statusUpdateSuccess=1");
+        exit();
+    } else {
+        header("Location: postlogin.php?statusUpdateError=1");
+        exit();
+    }
+}
 ?>

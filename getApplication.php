@@ -7,37 +7,59 @@ if ($mysqli->connect_error) {
 }
 
 $level = isset($_GET['level']) ? $_GET['level'] : "";
-$major = isset($_GET['major']) ? $_GET['major'] : "";
+$search = isset($_GET['search']) ? $_GET['search'] : "";
 
 $statusOptions = array("Submitted", "Reviewing", "Rejected", "Interviewing");
+
+$searchableColumns = array("firstName", "lastName", "currentLevel", "degree", "applyingJob", "internationalStudent", "serveInstructor");
 
 $sql = "SELECT firstName, lastName, studentID, email, phoneNumber, currentLevel, GPA, degree, graduatingSemester,
     graduatingYear, hoursCompleted, applyingJob, internationalStudent, GTACert, description, serveInstructor, resume, timestamp, status FROM application WHERE 1 ";
 
-if (!empty($level) && !empty($major)) {
-    $sql .= "AND currentLevel = ? AND degree = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ss", $level, $major);
-} elseif (!empty($level)) {
-    $sql .= "AND currentLevel = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("s", $level);
-} elseif (!empty($major)) {
-    $sql .= "AND degree = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("s", $major);
-} else {
-    $stmt = $mysqli->prepare($sql);
+if (!empty($level)) {
+    $sql .= "AND currentLevel = ? ";
 }
 
+if (!empty($search)) {
+    $sql .= "AND (";
+    foreach ($searchableColumns as $column) {
+        $sql .= "$column LIKE ? OR ";
+    }
+    $sql = rtrim($sql, " OR "); 
+    $sql .= ") ";
+}
+
+$stmt = $mysqli->prepare($sql);
+
 if ($stmt) {
+    $paramTypes = "";
+    $bindParams = array();
+
+    if (!empty($level)) {
+        $paramTypes .= "s";
+        $bindParams[] = &$level;
+    }
+
+    if (!empty($search)) {
+        for ($i = 0; $i < count($searchableColumns); $i++) {
+            $paramTypes .= "s";
+            $searchParam = "%$search%";
+            $bindParams[] = &$searchParam;
+        }
+    }
+
+    if (!empty($paramTypes)) {
+        array_unshift($bindParams, $paramTypes);
+        call_user_func_array([$stmt, "bind_param"], $bindParams);
+    }
+
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp, $status);
 
     echo "<form method='post' action='update_status.php'>";
     echo "<div style='max-height: 600px; overflow: auto; border: 5px inset #0072bb;'>";
-    echo "<table class='table table-hover table-auto'>";
+    echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
     echo "<th>Name</th>";
