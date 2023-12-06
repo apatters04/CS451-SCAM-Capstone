@@ -100,20 +100,17 @@ if ($resultUserInfo->num_rows > 0) {
         echo "<table class='table table-hover'>";
         echo "<thead>";
         echo "<tr>";
-        echo "<th>First Name</th>";
-        echo "<th>Last Name</th>";
+        echo "<th>Name</th>";
         echo "<th>Student ID</th>";
         echo "<th>Email</th>";
         echo "<th>Phone Number</th>";
         echo "<th>Current Level</th>";
         echo "<th>GPA</th>";
         echo "<th>Degree</th>";
-        echo "<th>Graduating Semester</th>";
-        echo "<th>Graduating Year</th>";
+        echo "<th>Graduating Semester/Year</th>";
         echo "<th>Hours Completed</th>";
         echo "<th>Applying Job</th>";
         echo "<th>International Students Checkbox</th>";
-        echo "<th>Description</th>";
         echo "<th>Serve Instructor</th>";
         echo "<th>Timestamp</th>";
         echo "<th>Status</th>";
@@ -123,22 +120,19 @@ if ($resultUserInfo->num_rows > 0) {
     
         while ($result->fetch()) {
             echo "<tr>";
-            echo "<td>" . $fname . "</td>";
-            echo "<td>" . $lname . "</td>";
+            echo "<td>" . $fname . " ". $lname "</td>";
             echo "<td>" . $sid . "</td>";
             echo "<td>" . $email . "</td>";
             echo "<td>" . $phoneNumber . "</td>";
             echo "<td>" . $currentlevel . "</td>";
             echo "<td>" . $gpa . "</td>";
             echo "<td>" . $degree . "</td>";
-            echo "<td>" . $gsem . "</td>";
-            echo "<td>" . $gyear . "</td>";
+            echo "<td>" . $gsem . " " . $gyear"</td>";
             echo "<td>" . $hcomplete . "</td>";
             echo "<td>" . $applyjob . "</td>";
             echo "<td>" . $istu . "</td>";
-            echo "<td>" . $desc . "</td>";
             echo "<td>" . $serv . "</td>";
-            echo "<td>" . $timestamp . "</td>";
+            echo "<td>" . date('m-d-Y', strtotime($timestamp)) . "</td>";
             echo "<td>" . $status . "</td>";
             echo "</tr>";
         }

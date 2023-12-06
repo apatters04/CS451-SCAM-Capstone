@@ -50,8 +50,7 @@ if ($stmt) {
     echo "<th>Current Level</th>";
     echo "<th>GPA</th>";
     echo "<th>Degree</th>";
-    echo "<th>Graduating Semester</th>";
-    echo "<th>Graduating Year</th>";
+    echo "<th>Graduating Semester & Year</th>";
     echo "<th>Hours Completed</th>";
     echo "<th>Applying Job</th>";
     echo "<th>International Students Checkbox</th>";
@@ -73,8 +72,7 @@ if ($stmt) {
         echo "<td>" . $currentlevel . "</td>";
         echo "<td>" . $gpa . "</td>";
         echo "<td>" . $degree . "</td>";
-        echo "<td>" . $gsem . "</td>";
-        echo "<td>" . $gyear . "</td>";
+        echo "<td>" . $gsem . " ".  $gyear. "</td>";
         echo "<td>" . $hcomplete . "</td>";
         echo "<td>" . $applyjob . "</td>";
         echo "<td>" . $istu . "</td>";
@@ -89,7 +87,7 @@ if ($stmt) {
             echo "<a href='$resume' target='_blank'>View Resume</a>";
         }
         echo "</td>";
-        echo "<td>" . $timestamp . "</td>";
+        echo "<td>" . date('m-d-Y', strtotime($timestamp)) . "</td>";
         echo "<td>";
         echo "<select name='status[]'>";
         foreach ($statusOptions as $option) {
