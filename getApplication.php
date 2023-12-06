@@ -1,3 +1,6 @@
+
+
+
 <?php
 session_start();
 
@@ -40,8 +43,7 @@ if ($stmt) {
     echo "<table class='table table-hover'>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th>First Name</th>";
-    echo "<th>Last Name</th>";
+    echo "<th>Name</th>";
     echo "<th>Student ID</th>";
     echo "<th>Email</th>";
     echo "<th>Phone Number</th>";
@@ -54,7 +56,6 @@ if ($stmt) {
     echo "<th>Applying Job</th>";
     echo "<th>International Students Checkbox</th>";
     echo "<th>GTA Certification</th>";
-    echo "<th>Description</th>";
     echo "<th>Serve Instructor</th>";
     echo "<th>Resume</th>";
     echo "<th>Timestamp</th>";
@@ -65,8 +66,7 @@ if ($stmt) {
 
     while ($stmt->fetch()) {
         echo "<tr>";
-        echo "<td>" . $fname . "</td>";
-        echo "<td>" . $lname . "</td>";
+        echo "<td>" . $fname . " ". $lname ."</td>";
         echo "<td>" . $sid . "</td>";
         echo "<td>" . $email . "</td>";
         echo "<td>" . $phoneNumber . "</td>";
@@ -83,7 +83,6 @@ if ($stmt) {
             echo "<a href='$gtacert' target='_blank'>View GTACert</a>";
         }
         echo "</td>";
-        echo "<td>" . $desc . "</td>";
         echo "<td>" . $serv . "</td>";
         echo "<td>";
         if ($resume != "" && $resume != "null") {
