@@ -125,6 +125,7 @@ $_SESSION['email'] = $row['email'];
             });
         });
     </script>
+
 </body>
 
 </html>

@@ -39,7 +39,8 @@ if ($stmt) {
     $stmt->bind_result($fname, $lname, $sid, $email, $phoneNumber, $currentlevel, $gpa, $degree, $gsem, $gyear, $hcomplete, $applyjob, $istu, $gtacert, $desc, $serv, $resume, $timestamp, $status);
 
     echo "<form method='post' action='update_status.php'>";
-    echo "<table class='table table-hover'>";
+    echo "<div class='table-responsive'>";
+    echo "<table class='table table-hover table-auto'>";
     echo "<thead>";
     echo "<tr>";
     echo "<th>Name</th>";
@@ -106,7 +107,7 @@ if ($stmt) {
 
     echo "</tbody>";
     echo "</table>";
-
+    echo "</div>";
     echo "<input type='submit' value='Update Status'>";
     echo "</form>";
 

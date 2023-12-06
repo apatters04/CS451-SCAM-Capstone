@@ -85,8 +85,6 @@ form {
 }
 
 
-
-/* Full-width inputs */
 input {
   width: 100%;
   padding: 12px 20px;
@@ -137,7 +135,7 @@ img.logo {
 }
 
 #txtHint{
-  width: 100px;
+  width: 100%;
 }
 
 div#appform{
@@ -153,16 +151,8 @@ div#appform{
 }
 
 
-th.asc::after {
-  content: '\25B2'; /* Up arrow */
-  padding-left: 5px;
-}
-
-th.desc::after {
-  content: '\25BC'; /* Down arrow */
-  padding-left: 5px;
-}
-
 #req{
   color:rgb(156, 51, 51);
 }
+
+
