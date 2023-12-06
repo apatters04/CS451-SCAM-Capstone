@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $servername = "localhost";
 $username = "root";
@@ -77,7 +78,8 @@ $_SESSION['email'] = $row['email'];
         
     </div>
     </div>
-            <br>
+    <br>
+    
     <form>
         <select name="level" id="levelSelect">
             <option value="">Select a level:</option>
@@ -94,7 +96,7 @@ $_SESSION['email'] = $row['email'];
         </select>
     </form>
     <br>
-    <div id="txtHint" >Application info will be listed here...</div>
+    <div id="txtHint">Application info will be listed here...</div>
 
     <br>
     <script>
